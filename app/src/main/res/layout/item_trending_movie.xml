@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.borabor.movieapp.util.ExtensionsKt" />
+
+        <import type="com.borabor.movieapp.util.ImageQuality" />
+
+        <import type="com.borabor.movieapp.util.MediaType" />
+
+        <variable
+            name="movie"
+            type="com.borabor.movieapp.domain.model.Movie" />
+
+    </data>
+
+    <FrameLayout
+        detailId="@{movie.id}"
+        detailImageUrl="@{movie.posterPath}"
+        detailMediaType="@{MediaType.MOVIE}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="?attr/selectableItemBackground">
+
+        <ImageView
+            fitTop="@{true}"
+            imageMediaType="@{MediaType.MOVIE}"
+            imageQuality="@{ImageQuality.HIGH}"
+            imageUrl="@{movie.posterPath}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/trending_item_height"
+            tools:src="@drawable/ic_baseline_movie_24" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.7"
+            android:background="@color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/start_margin"
+            android:paddingTop="@dimen/trending_padding_top"
+            android:paddingEnd="@dimen/end_margin"
+            android:paddingBottom="@dimen/bottom_margin_small">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="@{movie.title}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/title_text_size_large"
+                android:textStyle="bold"
+                tools:text="Movie Title" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{ExtensionsKt.formatDate(movie.releaseDate)}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/detail_brief_text_size"
+                    tools:text="01 December, 2022" />
+
+                <TextView
+                    coloredRating="@{ExtensionsKt.round(movie.voteAverage)}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/textview_drawable_padding"
+                    android:textSize="@dimen/detail_brief_text_size"
+                    app:drawableStartCompat="@drawable/ic_baseline_star_rate_18"
+                    tools:text="0.0" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/bottom_margin_large"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:text="@{movie.overview}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/detail_brief_text_size"
+                tools:text="Movie summary" />
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/fabTrailer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/trending_trailer_button"
+                app:icon="@drawable/ic_baseline_play_arrow_48" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>

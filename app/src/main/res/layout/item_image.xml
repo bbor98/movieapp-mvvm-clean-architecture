@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.borabor.movieapp.util.ImageQuality" />
+
+        <variable
+            name="isGrid"
+            type="Boolean" />
+
+        <variable
+            name="isPortrait"
+            type="Boolean" />
+
+        <variable
+            name="image"
+            type="com.borabor.movieapp.domain.model.Image" />
+
+    </data>
+
+    <FrameLayout
+        isImage="@{true}"
+        android:layout_width="@{isGrid ? @dimen/grid_list_item_width : (isPortrait ? @dimen/portrait_image_width : @dimen/landscape_image_width), default = @dimen/landscape_image_width}"
+        android:layout_height="@{isPortrait ? @dimen/portrait_image_height : (isGrid ? @dimen/landscape_image_height_grid : @dimen/landscape_image_height), default = @dimen/landscape_image_height}"
+        android:layout_marginEnd="@dimen/recyclerview_item_end_margin"
+        android:layout_marginBottom="@{isGrid}"
+        android:clipToPadding="false"
+        android:padding="1dp">
+
+        <androidx.cardview.widget.CardView
+            isVisible="@{!isPortrait}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="@dimen/card_elevation">
+
+            <ImageView
+                imageQuality="@{ImageQuality.MEDIUM}"
+                imageUrl="@{image.filePath}"
+                android:layout_width="@{isGrid ? @dimen/grid_list_item_width : @dimen/landscape_image_width, default = @dimen/landscape_image_width}"
+                android:layout_height="@{isGrid ? @dimen/landscape_image_height_grid : @dimen/landscape_image_height, default = @dimen/landscape_image_height}"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            isVisible="@{isPortrait}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="@dimen/card_elevation">
+
+            <ImageView
+                imageQuality="@{ImageQuality.MEDIUM}"
+                imageUrl="@{image.filePath}"
+                android:layout_width="@{isGrid ? @dimen/grid_list_item_width : @dimen/portrait_image_width, default = @dimen/portrait_image_width}"
+                android:layout_height="@dimen/portrait_image_height"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
+</layout>

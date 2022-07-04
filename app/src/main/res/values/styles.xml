@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Loading">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:indeterminate">true</item>
+    </style>
+
+    <style name="Title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+    <style name="TitleWithoutSeeAll">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/start_margin</item>
+        <item name="android:layout_marginEnd">@dimen/end_margin</item>
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TitleParent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/start_margin</item>
+        <item name="android:layout_marginEnd">@dimen/end_margin_small</item>
+    </style>
+
+    <style name="RecyclerView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/top_margin_small</item>
+        <item name="android:layout_marginBottom">@dimen/bottom_margin_large</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:paddingStart">@dimen/start_margin</item>
+        <item name="android:paddingEnd">@dimen/end_margin_small</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="layoutManager">androidx.recyclerview.widget.LinearLayoutManager</item>
+    </style>
+
+    <style name="ListItemCount">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+    <style name="SeeAll" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:paddingStart">@dimen/start_margin_small</item>
+        <item name="android:paddingEnd">@dimen/end_margin_small</item>
+        <item name="android:text">@string/button_see_all</item>
+        <item name="android:textColor">@android:color/holo_blue_light</item>
+        <item name="android:textStyle">bold</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+    <style name="BackButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?selectableItemBackgroundBorderless</item>
+        <item name="android:src">?attr/homeAsUpIndicator</item>
+    </style>
+
+    <style name="BackButtonParent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/start_margin</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">@dimen/bottom_margin</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="BriefDetailBody">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/detail_brief_text_size</item>
+    </style>
+
+    <style name="BriefDetailTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:textSize">@dimen/detail_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SpinnerParent" parent="CardView">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_marginStart">@dimen/start_margin</item>
+        <item name="android:layout_marginTop">1dp</item>
+        <item name="android:layout_marginEnd">@dimen/end_margin</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+    <style name="BriefDetailParent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingStart">@dimen/start_margin</item>
+        <item name="android:paddingTop">@dimen/top_margin_small</item>
+        <item name="android:paddingEnd">@dimen/end_margin</item>
+        <item name="android:paddingBottom">@dimen/bottom_margin_small</item>
+    </style>
+
+    <style name="ExpandableLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="el_duration">600</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+    <style name="ExpandableLayoutTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/start_margin</item>
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+    <style name="ExpandIcon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/end_margin</item>
+        <item name="android:src">@drawable/ic_baseline_keyboard_arrow_down_24</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+    <style name="DetailsTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/start_margin</item>
+        <item name="android:layout_marginEnd">@dimen/end_margin</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DetailsBody">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/start_margin</item>
+        <item name="android:layout_marginEnd">@dimen/end_margin</item>
+        <item name="android:layout_marginBottom">@dimen/bottom_margin</item>
+        <item name="fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="Externals">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginEnd">12dp</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="ExternalsParent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/start_margin</item>
+        <item name="android:layout_marginTop">@dimen/top_margin_small</item>
+        <item name="android:layout_marginEnd">@dimen/end_margin</item>
+        <item name="android:layout_marginBottom">@dimen/bottom_margin_large</item>
+    </style>
+
+    <style name="DetailLightTheme" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/black</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="DetailDarkTheme" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="FullscreenImageTheme" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
+
+    <style name="SeeAllLightTheme" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="SeeAllDarkTheme" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+</resources>

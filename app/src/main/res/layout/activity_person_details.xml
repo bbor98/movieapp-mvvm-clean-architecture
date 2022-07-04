@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.borabor.movieapp.util.ExtensionsKt" />
+
+        <import type="com.borabor.movieapp.util.ExternalPlatform" />
+
+        <import type="com.borabor.movieapp.util.MediaType" />
+
+        <import type="com.borabor.movieapp.util.ImageQuality" />
+
+        <import type="com.borabor.movieapp.util.IntentType" />
+
+        <variable
+            name="activity"
+            type="com.borabor.movieapp.presentation.ui.persondetails.PersonDetailsActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.borabor.movieapp.presentation.ui.persondetails.PersonDetailsViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@{activity.backgroundColor}"
+        android:orientation="vertical"
+        tools:context=".presentation.ui.persondetails.PersonDetailsActivity">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            isVisible="@{viewModel.uiState.success}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                backgroundColor="@{activity.backgroundColor}"
+                collapsingToolbar="@{collapsingToolbarLayout}"
+                frameLayout="@{frameLayout}"
+                toolbarTitle="@{viewModel.details.name}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@{activity.backgroundColor}"
+                android:fitsSystemWindows="true">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsingToolbarLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/detail_poster_height"
+                    app:contentScrim="@{activity.backgroundColor}"
+                    app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+                    app:titleCollapseMode="scale"
+                    app:toolbarId="@id/toolbar">
+
+                    <FrameLayout
+                        android:id="@+id/frameLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fitsSystemWindows="true"
+                        app:layout_collapseMode="parallax">
+
+                        <ImageView
+                            centerCrop="@{true}"
+                            imageMediaType="@{MediaType.PERSON}"
+                            imageQuality="@{ImageQuality.HIGH}"
+                            imageUrl="@{viewModel.details.profilePath}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            tools:src="@drawable/ic_baseline_person_24" />
+
+                        <LinearLayout
+                            style="@style/BriefDetailParent"
+                            transparentBackground="@{activity.backgroundColor}">
+
+                            <TextView
+                                style="@style/BriefDetailTitle"
+                                android:text="@{viewModel.details.name}"
+                                tools:text="Person Name" />
+
+                            <TextView
+                                style="@style/BriefDetailBody"
+                                isVisible="@{viewModel.details.placeOfBirth != null}"
+                                android:text="@{viewModel.details.placeOfBirth}"
+                                tools:text="Birthplace" />
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        activity="@{activity}"
+                        backArrowTint="@{activity.backgroundColor}"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        app:layout_collapseMode="pin" />
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nestedScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@{activity.backgroundColor}"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/top_margin_large">
+
+                    <TextView
+                        style="@style/DetailsTitle"
+                        isVisible="@{!viewModel.details.biography.empty}"
+                        android:text="@string/detail_biography" />
+
+                    <TextView
+                        style="@style/DetailsBody"
+                        isVisible="@{!viewModel.details.biography.empty}"
+                        android:layout_marginBottom="@dimen/bottom_margin_large"
+                        android:text="@{viewModel.details.biography}"
+                        tools:text="Biography" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
+
+                        <TextView
+                            android:id="@+id/image"
+                            style="@style/Title"
+                            isVisible="@{!viewModel.details.images.profiles.empty}"
+                            android:text="@string/detail_title_images" />
+
+                        <TextView
+                            style="@style/ListItemCount"
+                            isVisible="@{!viewModel.details.images.profiles.empty}"
+                            android:text="@{@string/item_count(viewModel.details.images.profiles.size())}"
+                            app:layout_constraintStart_toEndOf="@id/image" />
+
+                        <TextView
+                            style="@style/SeeAll"
+                            backgroundColor="@{activity.backgroundColor}"
+                            intentType="@{IntentType.IMAGES}"
+                            isVisible="@{viewModel.details.images.profiles.size() > 3}"
+                            list="@{viewModel.details.images.profiles}"
+                            mediaType="@{MediaType.PERSON}"
+                            title="@{@string/detail_title_images + @string/item_count(viewModel.details.images.profiles.size())}" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        style="@style/RecyclerView"
+                        fixedSize="@{true}"
+                        isVisible="@{!viewModel.details.images.profiles.empty}"
+                        android:adapter="@{activity.adapterImages}" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        expand="@{expandableLayout}"
+                        expandIcon="@{ivExpand}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/ExpandableLayoutTitle"
+                            android:text="@string/detail_title_details"
+                            app:layout_constraintBottom_toTopOf="@id/expandableLayout" />
+
+                        <ImageView
+                            android:id="@+id/ivExpand"
+                            style="@style/ExpandIcon"
+                            iconTint="@{activity.backgroundColor}"
+                            app:layout_constraintBottom_toTopOf="@id/expandableLayout" />
+
+                        <net.cachapa.expandablelayout.ExpandableLayout
+                            android:id="@+id/expandableLayout"
+                            style="@style/ExpandableLayout">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:paddingTop="@dimen/top_margin">
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    isVisible="@{viewModel.details.birthday != null}"
+                                    android:text="@string/detail_birthday" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    isVisible="@{viewModel.details.birthday != null}"
+                                    android:text="@{ExtensionsKt.formatDate(viewModel.details.birthday) + viewModel.details.calcCurrentAge(context)}" />
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    isVisible="@{viewModel.details.placeOfBirth != null}"
+                                    android:text="@string/detail_birthplace" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    isVisible="@{viewModel.details.placeOfBirth != null}"
+                                    android:text="@{viewModel.details.placeOfBirth}" />
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    isVisible="@{viewModel.details.deathday != null}"
+                                    android:text="@string/detail_deathday" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    isVisible="@{viewModel.details.deathday != null}"
+                                    android:text="@{ExtensionsKt.formatDate(viewModel.details.deathday) + viewModel.details.calcDeathAge(context)}" />
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    isVisible="@{viewModel.details.gender != 0}"
+                                    android:text="@string/detail_gender" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    isVisible="@{viewModel.details.gender != 0}"
+                                    android:text="@{viewModel.details.setGenderText(context)}" />
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    isVisible="@{!viewModel.details.knownForDepartment.empty}"
+                                    android:text="@string/detail_job" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    isVisible="@{!viewModel.details.knownForDepartment.empty}"
+                                    android:text="@{viewModel.details.knownForDepartment}" />
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    isVisible="@{!viewModel.details.getNames().empty}"
+                                    android:text="@string/detail_also_known_as" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    isVisible="@{!viewModel.details.getNames().empty}"
+                                    android:text="@{viewModel.details.getNames()}" />
+
+                            </LinearLayout>
+
+                        </net.cachapa.expandablelayout.ExpandableLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        style="@style/TitleParent"
+                        isVisible="@{!viewModel.details.movieCredits.cast.empty || !viewModel.details.movieCredits.crew.empty}"
+                        android:layout_marginTop="0dp">
+
+                        <TextView
+                            android:id="@+id/textView"
+                            style="@style/TitleDayNight"
+                            android:text="@string/detail_title_movie_credits" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            style="@style/ListItemCount"
+                            android:text="@{@string/item_count(viewModel.movieSeeAllList.size())}"
+                            app:layout_constraintStart_toEndOf="@id/textView" />
+
+                        <androidx.cardview.widget.CardView
+                            style="@style/SpinnerParent"
+                            app:layout_constraintStart_toEndOf="@+id/textView2"
+                            tools:layout_editor_absoluteY="1dp">
+
+                            <Spinner
+                                android:id="@+id/spMovieCredits"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:entries="@array/credits_type" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            style="@style/SeeAll"
+                            backgroundColor="@{activity.backgroundColor}"
+                            intentType="@{IntentType.PERSON_CREDITS}"
+                            isVisible="@{viewModel.movieSeeAllList.size() > 3}"
+                            list="@{viewModel.movieSeeAllList}"
+                            mediaType="@{MediaType.MOVIE}"
+                            title="@{viewModel.movieSeeAllTitle}" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        style="@style/RecyclerView"
+                        isVisible="@{!viewModel.details.movieCredits.cast.empty || !viewModel.details.movieCredits.crew.empty}"
+                        android:adapter="@{activity.adapterMovies}" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        style="@style/TitleParent"
+                        isVisible="@{!viewModel.details.tvCredits.cast.empty || !viewModel.details.tvCredits.crew.empty}">
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            style="@style/TitleDayNight"
+                            android:text="@string/detail_title_tv_credits" />
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            style="@style/ListItemCount"
+                            android:text="@{@string/item_count(viewModel.tvSeeAllList.size())}"
+                            app:layout_constraintStart_toEndOf="@id/textView3" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardView2"
+                            style="@style/SpinnerParent"
+                            app:layout_constraintStart_toEndOf="@+id/textView4"
+                            tools:layout_editor_absoluteY="1dp">
+
+                            <Spinner
+                                android:id="@+id/spTvCredits"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:entries="@array/credits_type" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            style="@style/SeeAll"
+                            backgroundColor="@{activity.backgroundColor}"
+                            intentType="@{IntentType.PERSON_CREDITS}"
+                            isVisible="@{viewModel.tvSeeAllList.size() > 3}"
+                            list="@{viewModel.tvSeeAllList}"
+                            mediaType="@{MediaType.TV}"
+                            title="@{viewModel.tvSeeAllTitle}" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        style="@style/RecyclerView"
+                        isVisible="@{!viewModel.details.tvCredits.cast.empty || !viewModel.details.tvCredits.crew.empty}"
+                        android:adapter="@{activity.adapterTvs}" />
+
+                    <TextView
+                        style="@style/TitleWithoutSeeAll"
+                        isVisible="@{viewModel.details.externalIds.imdbId != null || viewModel.details.externalIds.facebookId != null || viewModel.details.externalIds.instagramId != null || viewModel.details.externalIds.twitterId != null || viewModel.details.homepage != null}"
+                        android:text="@string/detail_title_networks" />
+
+                    <LinearLayout
+                        style="@style/ExternalsParent"
+                        isVisible="@{viewModel.details.externalIds.imdbId != null || viewModel.details.externalIds.facebookId != null || viewModel.details.externalIds.instagramId != null || viewModel.details.externalIds.twitterId != null || viewModel.details.homepage != null}">
+
+                        <ImageView
+                            style="@style/Externals"
+                            externalId="@{viewModel.details.externalIds.imdbId}"
+                            externalPlatform="@{ExternalPlatform.IMDB}"
+                            iconTint="@{activity.backgroundColor}"
+                            isVisible="@{viewModel.details.externalIds.imdbId != null}"
+                            android:src="@drawable/ic_imdb_36" />
+
+                        <ImageView
+                            style="@style/Externals"
+                            externalId="@{viewModel.details.externalIds.facebookId}"
+                            externalPlatform="@{ExternalPlatform.FACEBOOK}"
+                            iconTint="@{activity.backgroundColor}"
+                            isVisible="@{viewModel.details.externalIds.facebookId != null}"
+                            android:src="@drawable/ic_facebook_36" />
+
+                        <ImageView
+                            style="@style/Externals"
+                            externalId="@{viewModel.details.externalIds.instagramId}"
+                            externalPlatform="@{ExternalPlatform.INSTAGRAM}"
+                            iconTint="@{activity.backgroundColor}"
+                            isVisible="@{viewModel.details.externalIds.instagramId != null}"
+                            android:src="@drawable/ic_instagram_36" />
+
+                        <ImageView
+                            style="@style/Externals"
+                            externalId="@{viewModel.details.externalIds.twitterId}"
+                            externalPlatform="@{ExternalPlatform.TWITTER}"
+                            iconTint="@{activity.backgroundColor}"
+                            isVisible="@{viewModel.details.externalIds.twitterId != null}"
+                            android:src="@drawable/ic_twitter_36" />
+
+                        <ImageView
+                            style="@style/Externals"
+                            externalId="@{viewModel.details.homepage}"
+                            externalPlatform="@{ExternalPlatform.HOMEPAGE}"
+                            iconTint="@{activity.backgroundColor}"
+                            isVisible="@{viewModel.details.homepage != null}"
+                            android:src="@drawable/ic_baseline_link_36" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <FrameLayout
+            style="@style/BackButtonParent"
+            isVisible="@{viewModel.uiState.loading || viewModel.uiState.error}">
+
+            <ImageButton
+                style="@style/BackButton"
+                iconTint="@{activity.backgroundColor}"
+                android:onClick="@{() -> activity.finish()}" />
+
+        </FrameLayout>
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            style="@style/Loading"
+            isVisible="@{viewModel.uiState.loading}" />
+
+    </LinearLayout>
+
+</layout>

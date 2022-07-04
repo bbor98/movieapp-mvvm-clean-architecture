@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.borabor.movieapp.util.ImageQuality" />
+
+        <import type="com.borabor.movieapp.util.MediaType" />
+
+        <variable
+            name="person"
+            type="com.borabor.movieapp.domain.model.Person" />
+
+        <variable
+            name="isGrid"
+            type="Boolean" />
+
+        <variable
+            name="isCast"
+            type="Boolean" />
+
+    </data>
+
+    <LinearLayout
+        detailId="@{person.id}"
+        detailImageUrl="@{person.profilePath}"
+        detailMediaType="@{MediaType.PERSON}"
+        android:layout_width="@{isGrid ? @dimen/grid_list_item_width : @dimen/portrait_image_width, default = @dimen/portrait_image_width}"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/recyclerview_item_end_margin"
+        android:layout_marginBottom="@{isGrid}"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="1dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/portrait_image_height"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="@dimen/card_elevation">
+
+            <ImageView
+                imageMediaType="@{MediaType.PERSON}"
+                imageQuality="@{ImageQuality.LOW}"
+                imageUrl="@{person.profilePath}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@drawable/ic_baseline_person_24" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{person.name}"
+            android:textStyle="bold"
+            tools:text="Name Surname" />
+
+        <TextView
+            isVisible="@{!person.character.empty || !person.knownForDepartment.empty}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@{isCast ? person.character : person.knownForDepartment}"
+            tools:text="Character / Job" />
+
+    </LinearLayout>
+
+</layout>

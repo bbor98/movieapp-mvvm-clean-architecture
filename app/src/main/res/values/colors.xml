@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="day_night">#000000</color>
+    <color name="day_night_inverse">#FFFFFF</color>
+
+    <color name="nine_to_ten">#33FF00</color>
+    <color name="eight_to_nine">#66FF00</color>
+    <color name="seven_to_eight">#99FF00</color>
+    <color name="six_to_seven">#CCFF00</color>
+    <color name="five_to_six">#FFFF00</color>
+    <color name="four_to_five">#FFCC00</color>
+    <color name="three_to_four">#FF9900</color>
+    <color name="two_to_three">#FF6600</color>
+    <color name="one_to_two">#FF3300</color>
+    <color name="zero_to_one">#FF0000</color>
+    <color name="zero">#808080</color>
+</resources>

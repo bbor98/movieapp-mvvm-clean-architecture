@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.borabor.movieapp.util.ExtensionsKt" />
+
+        <import type="com.borabor.movieapp.util.MediaType" />
+
+        <variable
+            name="tvId"
+            type="Integer" />
+
+        <variable
+            name="season"
+            type="com.borabor.movieapp.domain.model.Season" />
+
+    </data>
+
+    <LinearLayout
+        detailId="@{tvId}"
+        detailImageUrl="@{season.posterPath}"
+        detailMediaType="@{MediaType.TV}"
+        seasonNumber="@{season.seasonNumber}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/start_margin"
+            android:paddingTop="@dimen/top_margin"
+            android:paddingEnd="@dimen/end_margin"
+            android:paddingBottom="@dimen/bottom_margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{season.name}"
+                android:textSize="@dimen/title_text_size_small"
+                android:textStyle="bold"
+                tools:text="Season name" />
+
+            <TextView
+                isVisible="@{season.airDate != null}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="@{ExtensionsKt.formatDate(season.airDate)}"
+                tools:text="01 January, 2022" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="@{@string/detail_season_episodes(season.episodeCount)}"
+                tools:text="0 episodes" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/tab_indicator_text" />
+
+    </LinearLayout>
+
+</layout>

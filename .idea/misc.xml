@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/drawable/ic_baseline_access_time_14.xml" value="0.2905" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/drawable/ic_baseline_keyboard_arrow_down_24.xml" value="0.2905" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/drawable/nav_menu_ic_favorites.xml" value="0.2905" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/activity_fullscreen_image.xml" value="0.23697916666666666" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/activity_main.xml" value="0.20092592592592592" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/activity_movie_details.xml" value="0.23697916666666666" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/activity_person_details.xml" value="0.23697916666666666" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/activity_season_details.xml" value="0.23697916666666666" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/activity_see_all.xml" value="0.23697916666666666" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/activity_tv_details.xml" value="0.3625" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/fragment_favorite_movies.xml" value="0.23697916666666666" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/fragment_favorite_tvs.xml" value="0.23697916666666666" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/fragment_favorites.xml" value="0.20092592592592592" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/fragment_home.xml" value="0.20092592592592592" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/fragment_movie_lists.xml" value="0.5" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/fragment_search.xml" value="0.20092592592592592" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/fragment_tv_lists.xml" value="0.20092592592592592" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/item_episode.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/item_favorite_movie.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/item_favorite_tv.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/item_fullscreen_image.xml" value="0.23697916666666666" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/item_genre.xml" value="0.23697916666666666" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/item_image.xml" value="0.23697916666666666" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/item_movie.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/item_person.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/item_season.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/item_trending_movie.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/item_trending_tv.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/item_tv.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/item_video.xml" value="0.23697916666666666" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/layout/layout_bottom_sheet.xml" value="0.23697916666666666" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20092592592592592" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2885" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/drawable/ic_baseline_access_time_14.xml" value="0.2885" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/drawable/ic_baseline_calendar_today_14.xml" value="0.2885" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2885" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.2885" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/drawable/ic_baseline_live_tv_24.xml" value="0.2885" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/drawable/ic_baseline_movie_24.xml" value="0.2885" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.2885" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/drawable/ic_baseline_play_arrow_48.xml" value="0.2885" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/drawable/ic_baseline_star_rate_14.xml" value="0.2885" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2885" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/drawable/ic_outline_home_24.xml" value="0.2885" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/drawable/ic_tmdb_24.xml" value="0.2885" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/drawable/ic_twitter_36.xml" value="0.2885" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/drawable/nav_menu_ic_favorites.xml" value="0.2885" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/drawable/nav_menu_ic_home.xml" value="0.2885" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/activity_fullscreen_image.xml" value="0.35795454545454547" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/activity_movie_details.xml" value="0.5" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/activity_person_details.xml" value="0.23703703703703705" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/activity_season_details.xml" value="0.1797752808988764" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/activity_see_all.xml" value="0.23703703703703705" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/activity_tv_details.xml" value="0.23703703703703705" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/fragment_favorite_movies.xml" value="0.1855072463768116" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/fragment_favorite_tvs.xml" value="0.25" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/fragment_favorites.xml" value="0.2359375" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/fragment_home.xml" value="0.2359375" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/fragment_movie_lists.xml" value="0.25" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/fragment_search.xml" value="0.33" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/fragment_tv_lists.xml" value="0.2328125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_cast.xml" value="0.2359375" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_credits.xml" value="0.5" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_episode.xml" value="0.375" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_favorite.xml" value="0.16161616161616163" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_favorite_movie.xml" value="0.33" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_favorite_tv.xml" value="0.4149377593360996" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_fullscreen_image.xml" value="0.2359375" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_genre.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_image.xml" value="0.67" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_movie.xml" value="0.33" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_movie_tv.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_person.xml" value="0.5" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_person_credits.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_season.xml" value="0.5" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_trending.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_trending_movie.xml" value="0.4739583333333333" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_trending_tv.xml" value="0.25" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_tv.xml" value="0.4444444444444444" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/item_video.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/layout/layout_bottom_sheet.xml" value="0.33" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppnew/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3625" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/bottom_nav_home_icon.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/bottom_sheet_backgroun.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_baseline_access_time_14.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_baseline_access_time_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_baseline_error_outline_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_baseline_image_36.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_baseline_keyboard_arrow_up_24.xml" value="0.22291666666666668" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_baseline_live_tv_24.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_baseline_play_arrow_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_baseline_play_arrow_48.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_baseline_star_rate_18.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_facebook_36.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_imdb_36.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_imdb_42.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_tmdb_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_tmdb_36.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_tmdb_42.xml" value="0.22291666666666668" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_tmdb_64.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/ic_twitter_36.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/nav_bar_favorites.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/rounded_corner_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/drawable/title_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/activity_full_screen_image.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/activity_fullscreen_image.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/activity_grid_list.xml" value="0.3625" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/activity_movie_details.xml" value="0.1" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/activity_person_details.xml" value="0.1282051282051282" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/activity_season_details.xml" value="0.17777777777777778" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/activity_see_all.xml" value="0.18" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/activity_tv_details.xml" value="0.18181818181818182" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/empty.xml" value="0.25" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/error.xml" value="0.3625" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/fragment_blank.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/fragment_favorite_movies.xml" value="0.19437340153452684" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/fragment_favorite_tvs.xml" value="0.3625" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/fragment_favorites.xml" value="0.1" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/fragment_movie_lists.xml" value="0.415625" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/fragment_search.xml" value="0.33" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/fragment_tv_lists.xml" value="0.33" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/fragment_video.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/fragment_video_dialog.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_company.xml" value="0.33" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_episode.xml" value="0.15656565656565657" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_favorite.xml" value="0.37748344370860926" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_favorite_movie.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_favorite_tv.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_full_screen_image.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_fullscreen_image.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_genre.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_image.xml" value="0.27555555555555555" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_movie_horizontal.xml" value="0.33" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_movie_list_horizontal.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_movie_tv.xml" value="0.2897196261682243" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_movie_tv_credits.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_movie_tv_credits_horizontal.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_movie_tv_horizontal.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_person.xml" value="0.18" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_person_credits.xml" value="0.33" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_person_horizontal.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_season.xml" value="0.16986301369863013" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_trending.xml" value="0.15656565656565657" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_trending_movie.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_trending_tv.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_tv_horizontal.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_tv_list_horizontal.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/item_video.xml" value="0.2923076923076923" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/layout/layout_bottom_sheet.xml" value="0.26301369863013696" />
+        <entry key="..\:/Users/Bora/AndroidStudioProjects/MovieAppyeni/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3625" />
+        <entry key="..\:/Users/Bora/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/auto_complete_list.xml" value="0.36666666666666664" />
+      </map>
+    </option>
+  </component>
+  <component name="EntryPointsManager">
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="dagger.hilt.android.AndroidEntryPoint" />
+    </list>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.borabor.movieapp.util.ExtensionsKt" />
+
+        <import type="com.borabor.movieapp.util.ImageQuality" />
+
+        <import type="com.borabor.movieapp.util.MediaType" />
+
+        <variable
+            name="backgroundColor"
+            type="Integer" />
+
+        <variable
+            name="episode"
+            type="com.borabor.movieapp.domain.model.Episode" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?attr/selectableItemBackground"
+            android:paddingStart="@dimen/start_margin"
+            android:paddingTop="@dimen/top_margin"
+            android:paddingEnd="@dimen/end_margin"
+            android:paddingBottom="@dimen/bottom_margin">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/episode_poster_width"
+                android:layout_height="@dimen/episode_poster_height"
+                android:layout_margin="1dp"
+                app:cardCornerRadius="@dimen/card_corner_radius">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        centerCrop="@{true}"
+                        imageMediaType="@{MediaType.TV}"
+                        imageQuality="@{ImageQuality.MEDIUM}"
+                        imageUrl="@{episode.stillPath}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:srcCompat="@drawable/ic_baseline_live_tv_24" />
+
+                    <FrameLayout
+                        android:layout_width="@dimen/episode_number_indicator_size"
+                        android:layout_height="@dimen/episode_number_indicator_size"
+                        android:background="@{backgroundColor}">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@{String.valueOf(episode.episodeNumber)}"
+                            android:textStyle="bold"
+                            tools:text="1" />
+
+                    </FrameLayout>
+
+                </FrameLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/start_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:text="@{episode.name}"
+                    android:textSize="@dimen/title_text_size_small"
+                    android:textStyle="bold"
+                    tools:text="Episode Name" />
+
+                <TextView
+                    isVisible="@{!episode.airDate.empty}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@{ExtensionsKt.formatDate(episode.airDate)}"
+                    tools:text="01 January, 2021" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/textview_drawable_padding"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@{ExtensionsKt.round(episode.voteAverage) + @string/item_count_s(ExtensionsKt.thousandsSeparator(episode.voteCount,context))}"
+                    app:drawableStartCompat="@drawable/ic_baseline_star_rate_14"
+                    tools:text="8.5 (10,000)" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/tab_indicator_text" />
+
+    </LinearLayout>
+
+</layout>

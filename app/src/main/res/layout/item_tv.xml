@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.borabor.movieapp.util.ExtensionsKt" />
+
+        <import type="com.borabor.movieapp.util.ImageQuality" />
+
+        <import type="com.borabor.movieapp.util.MediaType" />
+
+        <variable
+            name="tv"
+            type="com.borabor.movieapp.domain.model.Tv" />
+
+        <variable
+            name="isGrid"
+            type="Boolean" />
+
+        <variable
+            name="isCredits"
+            type="Boolean" />
+
+    </data>
+
+    <LinearLayout
+        detailId="@{tv.id}"
+        detailImageUrl="@{tv.posterPath}"
+        detailMediaType="@{MediaType.TV}"
+        android:layout_width="@{isGrid ? @dimen/grid_list_item_width : @dimen/portrait_image_width, default = @dimen/portrait_image_width}"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/recyclerview_item_end_margin"
+        android:layout_marginBottom="@{isGrid}"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="1dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/portrait_image_height"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="@dimen/card_elevation">
+
+            <ImageView
+                imageMediaType="@{MediaType.TV}"
+                imageQuality="@{ImageQuality.LOW}"
+                imageUrl="@{tv.posterPath}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@drawable/ic_baseline_live_tv_24" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{tv.name}"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="Tv Title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-light"
+                android:maxLength="@{isCredits ? Integer.MAX_VALUE : 4}"
+                android:text="@{isCredits ? (tv.character == null ? tv.job : tv.character) : tv.firstAirDate}"
+                tools:text="2022" />
+
+            <TextView
+                coloredRating="@{ExtensionsKt.round(tv.voteAverage)}"
+                isVisible="@{!isCredits}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/textview_drawable_padding"
+                android:fontFamily="sans-serif-light"
+                app:drawableStartCompat="@drawable/ic_baseline_star_rate_18"
+                tools:text="0.0" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

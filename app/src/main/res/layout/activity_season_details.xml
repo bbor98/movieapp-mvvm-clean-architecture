@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.borabor.movieapp.util.ExtensionsKt" />
+
+        <import type="com.borabor.movieapp.util.ImageQuality" />
+
+        <import type="com.borabor.movieapp.util.IntentType" />
+
+        <import type="com.borabor.movieapp.util.MediaType" />
+
+        <variable
+            name="activity"
+            type="com.borabor.movieapp.presentation.ui.seasondetails.SeasonDetailsActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.borabor.movieapp.presentation.ui.seasondetails.SeasonDetailsViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@{activity.backgroundColor}"
+        android:orientation="vertical"
+        tools:context=".presentation.ui.seasondetails.SeasonDetailsActivity">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinatorLayout"
+            isVisible="@{viewModel.uiState.success}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                backgroundColor="@{activity.backgroundColor}"
+                collapsingToolbar="@{collapsingToolbarLayout}"
+                frameLayout="@{frameLayout}"
+                toolbarTitle="@{viewModel.seasonDetails.name}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@{activity.backgroundColor}"
+                android:fitsSystemWindows="true">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsingToolbarLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    app:contentScrim="@{activity.backgroundColor}"
+                    app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+                    app:titleCollapseMode="scale"
+                    app:toolbarId="@id/toolbar">
+
+                    <FrameLayout
+                        android:id="@+id/frameLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fitsSystemWindows="true"
+                        app:layout_collapseMode="parallax">
+
+                        <ImageView
+                            fitTop="@{true}"
+                            imageMediaType="@{MediaType.TV}"
+                            imageQuality="@{ImageQuality.HIGH}"
+                            imageUrl="@{viewModel.seasonDetails.posterPath}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            tools:src="@drawable/ic_baseline_live_tv_24" />
+
+                        <LinearLayout
+                            style="@style/BriefDetailParent"
+                            transparentBackground="@{activity.backgroundColor}">
+
+                            <TextView
+                                style="@style/BriefDetailTitle"
+                                android:text="@{viewModel.seasonDetails.name}"
+                                tools:text="Season Name" />
+
+                            <TextView
+                                style="@style/BriefDetailBody"
+                                isVisible="@{!viewModel.seasonDetails.airDate.empty}"
+                                android:text="@{ExtensionsKt.formatDate(viewModel.seasonDetails.airDate)}"
+                                tools:text="01 January, 2022" />
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        activity="@{activity}"
+                        backArrowTint="@{activity.backgroundColor}"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        app:layout_collapseMode="pin" />
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nestedScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@{activity.backgroundColor}"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/top_margin_large">
+
+                    <TextView
+                        style="@style/DetailsTitle"
+                        isVisible="@{!viewModel.seasonDetails.overview.empty}"
+                        android:text="@string/detail_summary" />
+
+                    <TextView
+                        style="@style/DetailsBody"
+                        isVisible="@{!viewModel.seasonDetails.overview.empty}"
+                        android:layout_marginBottom="@dimen/bottom_margin_large"
+                        android:text="@{viewModel.seasonDetails.overview}"
+                        tools:text="Summary" />
+
+                    <TextView
+                        style="@style/DetailsTitle"
+                        isVisible="@{!viewModel.seasonDetails.credits.getWriters().empty}"
+                        android:text="@string/detail_writers" />
+
+                    <TextView
+                        style="@style/DetailsBody"
+                        isVisible="@{!viewModel.seasonDetails.credits.getWriters().empty}"
+                        android:layout_marginBottom="@dimen/bottom_margin_large"
+                        android:text="@{viewModel.seasonDetails.credits.getWriters()}"
+                        tools:text="Writers" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        style="@style/TitleParent"
+                        isVisible="@{!viewModel.seasonDetails.videos.filterVideos(false).empty}">
+
+                        <TextView
+                            android:id="@+id/videos"
+                            style="@style/Title"
+                            android:text="@string/detail_title_trailers" />
+
+                        <TextView
+                            style="@style/ListItemCount"
+                            android:text="@{@string/item_count(viewModel.seasonDetails.videos.filterVideos(false).size())}"
+                            app:layout_constraintStart_toEndOf="@id/videos" />
+
+                        <TextView
+                            style="@style/SeeAll"
+                            backgroundColor="@{activity.backgroundColor}"
+                            intentType="@{IntentType.VIDEOS}"
+                            isVisible="@{viewModel.seasonDetails.videos.filterVideos(false).size() > 2}"
+                            list="@{viewModel.seasonDetails.videos.filterVideos(false)}"
+                            mediaType="@{MediaType.MOVIE}"
+                            title="@{@string/detail_title_trailers + @string/item_count(viewModel.seasonDetails.videos.filterVideos(false).size())}" />
+
+                        <TextView
+                            style="@style/ListItemCount"
+                            app:layout_constraintStart_toEndOf="@id/videos" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvVideos"
+                        style="@style/RecyclerView"
+                        isVisible="@{!viewModel.seasonDetails.videos.filterVideos(false).empty}"
+                        android:adapter="@{activity.adapterSeasonVideos}" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        style="@style/TitleParent"
+                        isVisible="@{!viewModel.seasonDetails.credits.cast.empty}">
+
+                        <TextView
+                            android:id="@+id/cast"
+                            style="@style/Title"
+                            android:text="@string/detail_title_cast" />
+
+                        <TextView
+                            style="@style/ListItemCount"
+                            android:text="@{@string/item_count(viewModel.seasonDetails.credits.cast.size())}"
+                            app:layout_constraintStart_toEndOf="@id/cast" />
+
+                        <TextView
+                            style="@style/SeeAll"
+                            backgroundColor="@{activity.backgroundColor}"
+                            intentType="@{IntentType.CAST}"
+                            isVisible="@{viewModel.seasonDetails.credits.cast.size() > 3}"
+                            list="@{viewModel.seasonDetails.credits.cast}"
+                            mediaType="@{MediaType.PERSON}"
+                            title="@{@string/detail_title_cast + @string/item_count(viewModel.seasonDetails.credits.cast.size())}" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvCast"
+                        style="@style/RecyclerView"
+                        isVisible="@{!viewModel.seasonDetails.credits.cast.empty}"
+                        android:adapter="@{activity.adapterSeasonCast}" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        expand="@{expandableLayout}"
+                        expandIcon="@{ivExpand}"
+                        isVisible="@{!viewModel.seasonDetails.episodes.empty}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/episode"
+                            style="@style/ExpandableLayoutTitle"
+                            android:text="@string/detail_title_episodes"
+                            app:layout_constraintBottom_toTopOf="@id/expandableLayout" />
+
+                        <TextView
+                            style="@style/ListItemCount"
+                            android:text="@{@string/item_count(viewModel.seasonDetails.episodes.size())}"
+                            app:layout_constraintBottom_toTopOf="@id/expandableLayout"
+                            app:layout_constraintStart_toEndOf="@id/episode" />
+
+                        <ImageView
+                            android:id="@+id/ivExpand"
+                            style="@style/ExpandIcon"
+                            iconTint="@{activity.backgroundColor}"
+                            app:layout_constraintBottom_toTopOf="@id/expandableLayout" />
+
+                        <net.cachapa.expandablelayout.ExpandableLayout
+                            android:id="@+id/expandableLayout"
+                            style="@style/ExpandableLayout">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                fixedSize="@{true}"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:adapter="@{activity.adapterEpisodes}"
+                                android:orientation="vertical"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                        </net.cachapa.expandablelayout.ExpandableLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        style="@style/TitleParent"
+                        isVisible="@{!viewModel.seasonDetails.images.posters.empty}">
+
+                        <TextView
+                            android:id="@+id/image"
+                            style="@style/Title"
+                            android:text="@string/detail_title_images" />
+
+                        <TextView
+                            style="@style/ListItemCount"
+                            android:text="@{@string/item_count(viewModel.seasonDetails.images.posters.size())}"
+                            app:layout_constraintStart_toEndOf="@id/image" />
+
+                        <TextView
+                            style="@style/SeeAll"
+                            backgroundColor="@{activity.backgroundColor}"
+                            intentType="@{IntentType.IMAGES}"
+                            isVisible="@{viewModel.seasonDetails.images.posters.size() > 3}"
+                            list="@{viewModel.seasonDetails.images.posters}"
+                            mediaType="@{MediaType.PERSON}"
+                            title="@{@string/detail_title_images + @string/item_count(viewModel.seasonDetails.images.posters.size())}" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvImages"
+                        style="@style/RecyclerView"
+                        fixedSize="@{true}"
+                        android:adapter="@{activity.adapterSeasonImages}" />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <FrameLayout
+            style="@style/BackButtonParent"
+            isVisible="@{viewModel.uiState.loading || viewModel.uiState.error}">
+
+            <ImageButton
+                style="@style/BackButton"
+                iconTint="@{activity.backgroundColor}"
+                android:onClick="@{() -> activity.finish()}" />
+
+        </FrameLayout>
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            style="@style/Loading"
+            isVisible="@{viewModel.uiState.loading}" />
+
+    </LinearLayout>
+
+</layout>

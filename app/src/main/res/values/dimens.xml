@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="recyclerview_bottom_margin">12dp</dimen>
+    <dimen name="recyclerview_item_end_margin">8dp</dimen>
+
+    <dimen name="card_corner_radius">4dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+
+    <dimen name="textview_drawable_padding">4dp</dimen>
+
+    <dimen name="portrait_image_width">120dp</dimen>
+    <dimen name="portrait_image_height">180dp</dimen>
+
+    <dimen name="portrait_image_width_small">108dp</dimen>
+    <dimen name="portrait_image_height_small">162dp</dimen>
+
+    <dimen name="landscape_image_width">260dp</dimen>
+    <dimen name="landscape_image_height">150dp</dimen>
+    <dimen name="landscape_image_height_grid">105dp</dimen>
+
+    <dimen name="landscape_image_width_small">205dp</dimen>
+    <dimen name="landscape_image_height_small">115dp</dimen>
+
+    <dimen name="detail_poster_height">600dp</dimen>
+
+    <dimen name="episode_poster_width">208dp</dimen>
+    <dimen name="episode_poster_height">120dp</dimen>
+    <dimen name="episode_number_indicator_size">28dp</dimen>
+    <dimen name="episode_detail_poster_height">200dp</dimen>
+
+    <dimen name="start_margin">16dp</dimen>
+    <dimen name="start_margin_small">8dp</dimen>
+
+    <dimen name="top_margin">16dp</dimen>
+    <dimen name="top_margin_small">8dp</dimen>
+    <dimen name="top_margin_large">24dp</dimen>
+
+    <dimen name="end_margin">16dp</dimen>
+    <dimen name="end_margin_small">8dp</dimen>
+
+    <dimen name="bottom_margin">16dp</dimen>
+    <dimen name="bottom_margin_small">8dp</dimen>
+    <dimen name="bottom_margin_large">24dp</dimen>
+
+    <dimen name="padding_close_button">16dp</dimen>
+
+    <dimen name="trending_padding_top">100dp</dimen>
+    <dimen name="trending_item_height">450dp</dimen>
+
+    <dimen name="title_text_size_small">16sp</dimen>
+    <dimen name="title_text_size">20sp</dimen>
+    <dimen name="title_text_size_large">26sp</dimen>
+
+    <dimen name="detail_brief_text_size">18sp</dimen>
+    <dimen name="detail_title_text_size">24sp</dimen>
+
+    <dimen name="zero_dp">0dp</dimen>
+
+    <dimen name="custom_wrap_content">-2px</dimen>
+    <dimen name="horizontal_border_height">@dimen/custom_wrap_content</dimen>
+
+    <dimen name="custom_match_parent">-1px</dimen>
+    <dimen name="grid_list_item_width">@dimen/custom_match_parent</dimen>
+</resources>

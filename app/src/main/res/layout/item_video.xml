@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.borabor.movieapp.util.ExtensionsKt" />
+
+        <variable
+            name="video"
+            type="com.borabor.movieapp.domain.model.Video" />
+
+        <variable
+            name="isGrid"
+            type="Boolean" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="@{isGrid ? @dimen/grid_list_item_width : @dimen/landscape_image_width_small, default = @dimen/landscape_image_width_small}"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/recyclerview_item_end_margin"
+        android:layout_marginBottom="@{isGrid}"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="1dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="@dimen/card_elevation">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    imageUrl="@{video.key}"
+                    isThumbnail="@{true}"
+                    android:layout_width="@{isGrid ? @dimen/grid_list_item_width : @dimen/landscape_image_width_small, default = @dimen/landscape_image_width_small}"
+                    android:layout_height="@{isGrid ? @dimen/landscape_image_height_grid : @dimen/landscape_image_height_small, default = @dimen/landscape_image_height_small}"
+                    android:scaleType="centerCrop" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_play_arrow_48" />
+
+            </FrameLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{video.name}"
+            android:textStyle="bold"
+            tools:text="Video name" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@{ExtensionsKt.formatDate(video.publishedAt)}"
+            tools:text="Video release date" />
+
+    </LinearLayout>
+
+</layout>

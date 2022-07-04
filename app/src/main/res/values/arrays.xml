@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="airing_tvs_time_periods">
+        <item>@string/title_airing_day</item>
+        <item>@string/title_airing_week</item>
+    </string-array>
+
+    <string-array name="media_type">
+        <item>@string/title_movies</item>
+        <item>@string/title_tv_shows</item>
+    </string-array>
+
+    <string-array name="movie_genre_names">
+        <item>@string/genre_action</item>
+        <item>@string/genre_adventure</item>
+        <item>@string/genre_animation</item>
+        <item>@string/genre_comedy</item>
+        <item>@string/genre_crime</item>
+        <item>@string/genre_documentary</item>
+        <item>@string/genre_drama</item>
+        <item>@string/genre_family</item>
+        <item>@string/genre_fantasy</item>
+        <item>@string/genre_history</item>
+        <item>@string/genre_horror</item>
+        <item>@string/genre_music</item>
+        <item>@string/genre_mystery</item>
+        <item>@string/genre_romance</item>
+        <item>@string/genre_science_fiction</item>
+        <item>@string/genre_tv_movie</item>
+        <item>@string/genre_thriller</item>
+        <item>@string/genre_war</item>
+        <item>@string/genre_western</item>
+    </string-array>
+
+    <integer-array name="movie_genre_ids">
+        <item>28</item>
+        <item>12</item>
+        <item>16</item>
+        <item>35</item>
+        <item>80</item>
+        <item>99</item>
+        <item>18</item>
+        <item>10751</item>
+        <item>14</item>
+        <item>36</item>
+        <item>27</item>
+        <item>10402</item>
+        <item>9648</item>
+        <item>10749</item>
+        <item>878</item>
+        <item>10770</item>
+        <item>53</item>
+        <item>10752</item>
+        <item>37</item>
+    </integer-array>
+
+    <string-array name="tv_genre_names">
+        <item>@string/genre_action_adventure</item>
+        <item>@string/genre_animation</item>
+        <item>@string/genre_comedy</item>
+        <item>@string/genre_crime</item>
+        <item>@string/genre_documentary</item>
+        <item>@string/genre_drama</item>
+        <item>@string/genre_family</item>
+        <item>@string/genre_kids</item>
+        <item>@string/genre_mystery</item>
+        <item>@string/genre_news</item>
+        <item>@string/genre_reality</item>
+        <item>@string/genre_scifi_fantasy</item>
+        <item>@string/genre_soap</item>
+        <item>@string/genre_talk</item>
+        <item>@string/genre_war_politics</item>
+        <item>@string/genre_western</item>
+    </string-array>
+
+    <integer-array name="tv_genre_ids">
+        <item>10759</item>
+        <item>16</item>
+        <item>35</item>
+        <item>80</item>
+        <item>99</item>
+        <item>18</item>
+        <item>10751</item>
+        <item>10762</item>
+        <item>9648</item>
+        <item>10763</item>
+        <item>10764</item>
+        <item>10765</item>
+        <item>10766</item>
+        <item>10767</item>
+        <item>10768</item>
+        <item>37</item>
+    </integer-array>
+
+    <string-array name="credits_type">
+        <item>@string/title_as_cast</item>
+        <item>@string/title_as_crew</item>
+    </string-array>
+
+    <string-array name="viable_countries">
+        <item>@string/select_region</item>
+        <item>@string/argentina</item>
+        <item>@string/australia</item>
+        <item>@string/austria</item>
+        <item>@string/azerbaijan</item>
+        <item>@string/bangladesh</item>
+        <item>@string/belgium</item>
+        <item>@string/brazil</item>
+        <item>@string/bulgaria</item>
+        <item>@string/cambodia</item>
+        <item>@string/canada</item>
+        <item>@string/china</item>
+        <item>@string/costa_rica</item>
+        <item>@string/croatia</item>
+        <item>@string/czechia</item>
+        <item>@string/denmark</item>
+        <item>@string/egypt</item>
+        <item>@string/estonia</item>
+        <item>@string/finland</item>
+        <item>@string/france</item>
+        <item>@string/germany</item>
+        <item>@string/greece</item>
+        <item>@string/hong_kong</item>
+        <item>@string/hungary</item>
+        <item>@string/iceland</item>
+        <item>@string/india</item>
+        <item>@string/indonesia</item>
+        <item>@string/iran</item>
+        <item>@string/ireland</item>
+        <item>@string/israel</item>
+        <item>@string/italy</item>
+        <item>@string/japan</item>
+        <item>@string/latvia</item>
+        <item>@string/lebanon</item>
+        <item>@string/liberia</item>
+        <item>@string/lithuania</item>
+        <item>@string/malaysia</item>
+        <item>@string/mexico</item>
+        <item>@string/mongolia</item>
+        <item>@string/morocco</item>
+        <item>@string/nepal</item>
+        <item>@string/netherlands</item>
+        <item>@string/new_zealand</item>
+        <item>@string/norway</item>
+        <item>@string/pakistan</item>
+        <item>@string/peru</item>
+        <item>@string/philippines</item>
+        <item>@string/poland</item>
+        <item>@string/portugal</item>
+        <item>@string/puerto_rico</item>
+        <item>@string/romania</item>
+        <item>@string/russia</item>
+        <item>@string/singapore</item>
+        <item>@string/slovakia</item>
+        <item>@string/south_korea</item>
+        <item>@string/spain</item>
+        <item>@string/sweden</item>
+        <item>@string/switzerland</item>
+        <item>@string/taiwan</item>
+        <item>@string/thailand</item>
+        <item>@string/turkey</item>
+        <item>@string/ukraine</item>
+        <item>@string/united_arab_emirates</item>
+        <item>@string/united_kingdom</item>
+        <item>@string/united_states</item>
+        <item>@string/uruguay</item>
+        <item>@string/vietnam</item>
+    </string-array>
+</resources>
