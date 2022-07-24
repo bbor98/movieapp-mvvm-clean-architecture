@@ -121,8 +121,8 @@ This is a learning project. I'm not claiming that this project implements clean 
 - [YouTube Android Player](https://developers.google.com/youtube/android/player) - Playing YouTube video in app
 - [LeakCanary](https://github.com/square/leakcanary) - Detecting leaks within the app
 
-## 📱 Try The App
-Check out the [Releases](https://github.com/bbor98/demo/releases) and download the APK file to try the app.
+## 📱 Try the App
+Check out the [Releases](https://github.com/bbor98/movieapp-mvvm-clean-architecture/releases) and download & install the APK file to try the app.
 
 ## 📜 License
 ```
