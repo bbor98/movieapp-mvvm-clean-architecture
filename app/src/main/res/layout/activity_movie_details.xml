@@ -98,7 +98,7 @@
 
                                 <TextView
                                     style="@style/BriefDetailBody"
-                                    isVisible="@{viewModel.details.releaseDate.empty || viewModel.details.runtime != 0}"
+                                    isVisible="@{!viewModel.details.releaseDate.empty &amp;&amp; viewModel.details.runtime != 0}"
                                     android:layout_marginStart="6dp"
                                     android:layout_marginEnd="6dp"
                                     android:text="@string/bullet_point" />

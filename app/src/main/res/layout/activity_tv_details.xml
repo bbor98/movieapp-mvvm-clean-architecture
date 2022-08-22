@@ -89,7 +89,7 @@
                                 tools:text="Tv Title" />
 
                             <LinearLayout
-                                isVisible="@{viewModel.details.firstAirDate != null || !viewModel.details.episodeRunTime.empty}"
+                                isVisible="@{!viewModel.details.firstAirDate.empty || !viewModel.details.episodeRunTime.empty}"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="6dp">
@@ -101,7 +101,7 @@
 
                                 <TextView
                                     style="@style/BriefDetailBody"
-                                    isVisible="@{viewModel.details.firstAirDate != null || !viewModel.details.episodeRunTime.empty}"
+                                    isVisible="@{!viewModel.details.firstAirDate.empty &amp;&amp; !viewModel.details.episodeRunTime.empty}"
                                     android:layout_marginStart="6dp"
                                     android:layout_marginEnd="6dp"
                                     android:text="@string/bullet_point" />
