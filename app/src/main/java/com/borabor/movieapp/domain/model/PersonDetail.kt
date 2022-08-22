@@ -24,7 +24,7 @@ data class PersonDetail(
     val tvCredits: TvCredits
 ) {
     fun calcCurrentAge(context: Context): String {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !birthday.isNullOrEmpty() && !deathday.isNullOrEmpty()) {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !birthday.isNullOrEmpty() && deathday.isNullOrEmpty()) {
             val birthYear = birthday.subSequence(0, 4).toString().toInt()
             val birthMonth = birthday.subSequence(5, 7).toString().toInt()
             val birthDay = birthday.subSequence(8, 10).toString().toInt()
