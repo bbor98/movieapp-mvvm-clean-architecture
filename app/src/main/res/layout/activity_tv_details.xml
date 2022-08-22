@@ -328,12 +328,12 @@
 
                                 <TextView
                                     style="@style/DetailsTitle"
-                                    isVisible="@{viewModel.details.firstAirDate != null}"
+                                    isVisible="@{!viewModel.details.firstAirDate.empty}"
                                     android:text="@string/detail_first_air_date" />
 
                                 <TextView
                                     style="@style/DetailsBody"
-                                    isVisible="@{viewModel.details.firstAirDate != null}"
+                                    isVisible="@{!viewModel.details.firstAirDate.empty}"
                                     android:text="@{ExtensionsKt.formatDate(viewModel.details.firstAirDate)}" />
 
                                 <TextView

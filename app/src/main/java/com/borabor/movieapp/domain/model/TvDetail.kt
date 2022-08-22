@@ -30,10 +30,10 @@ data class TvDetail(
     val voteAverage: Double,
     val voteCount: Int
 ) {
-    fun getAiringDates() = firstAirDate?.let {
-        if (status != "Ended") it.take(4)
-        else "${it.take(4)} - ${lastAirDate?.take(4)}"
-    } ?: ""
+    fun getAiringDates() = if (!firstAirDate.isNullOrEmpty()) {
+        if (status != "Ended") firstAirDate.take(4)
+        else "${firstAirDate.take(4)} - ${lastAirDate?.take(4)}"
+    } else ""
 
     fun trimCreatorList() = createdBy.joinToString { it.name }
     fun trimGenreList() = genres.joinToString { it.name }
