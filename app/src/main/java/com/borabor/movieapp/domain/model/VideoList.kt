@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 data class VideoList(
     val results: List<Video>
 ) {
-    fun filterVideos(onlyTrailers: Boolean = false): List<Video> = results.filter {
+    fun filterVideos(onlyTrailers: Boolean = false) = results.filter {
         it.site == "YouTube" && (if (onlyTrailers) it.type == "Trailer" else (it.type == "Trailer" || it.type == "Teaser"))
     }
 

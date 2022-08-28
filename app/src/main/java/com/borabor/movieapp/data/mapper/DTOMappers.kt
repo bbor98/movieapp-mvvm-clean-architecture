@@ -3,33 +3,33 @@ package com.borabor.movieapp.data.mapper
 import com.borabor.movieapp.data.remote.dto.*
 import com.borabor.movieapp.domain.model.*
 
-internal fun CompanyDTO.toCompany() = Company(name, originCountry)
+fun CompanyDTO.toCompany() = Company(name, originCountry)
 
-internal fun CountryDTO.toCountry() = Country(name)
+fun CountryDTO.toCountry() = Country(name)
 
-internal fun CreatorDTO.toCreator() = Creator(name)
+fun CreatorDTO.toCreator() = Creator(name)
 
-internal fun CreditsDTO.toCredits() = Credits(cast.map { it.toPerson() }, crew.map { it.toPerson() }, guestStars?.map { it.toPerson() })
+fun CreditsDTO.toCredits() = Credits(cast.map { it.toPerson() }, crew.map { it.toPerson() }, guestStars?.map { it.toPerson() })
 
-internal fun EpisodeDTO.toEpisode() = Episode(airDate, episodeNumber, name, overview, seasonNumber, stillPath, voteAverage, voteCount)
+fun EpisodeDTO.toEpisode() = Episode(airDate, episodeNumber, name, overview, seasonNumber, stillPath, voteAverage, voteCount)
 
-internal fun EpisodeDetailDTO.toEpisodeDetail() = EpisodeDetail(credits.toCredits(), images.toImageList(), videos.toVideoList())
+fun EpisodeDetailDTO.toEpisodeDetail() = EpisodeDetail(credits.toCredits(), images.toImageList(), videos.toVideoList())
 
-internal fun ExternalDTO.toExternal() = External(facebookId, imdbId, instagramId, twitterId)
+fun ExternalDTO.toExternal() = External(facebookId, imdbId, instagramId, twitterId)
 
-internal fun GenreDTO.toGenre() = Genre(id, name)
+fun GenreDTO.toGenre() = Genre(id, name)
 
-internal fun ImageDTO.toImage() = Image(filePath)
+fun ImageDTO.toImage() = Image(filePath)
 
-internal fun ImageListDTO.toImageList() = ImageList(backdrops?.map { it.toImage() }, posters?.map { it.toImage() }, profiles?.map { it.toImage() }, stills?.map { it.toImage() })
+fun ImageListDTO.toImageList() = ImageList(backdrops?.map { it.toImage() }, posters?.map { it.toImage() }, profiles?.map { it.toImage() }, stills?.map { it.toImage() })
 
-internal fun LanguageDTO.toLanguage() = Language(englishName)
+fun LanguageDTO.toLanguage() = Language(englishName)
 
-internal fun MovieDTO.toMovie() = Movie(character, id, job, overview, posterPath, releaseDate, title, voteAverage)
+fun MovieDTO.toMovie() = Movie(character, id, job, overview, posterPath, releaseDate, title, voteAverage)
 
-internal fun MovieCreditsDTO.toMovieCredits() = MovieCredits(cast.map { it.toMovie() }, crew.map { it.toMovie() })
+fun MovieCreditsDTO.toMovieCredits() = MovieCredits(cast.map { it.toMovie() }, crew.map { it.toMovie() })
 
-internal fun MovieDetailDTO.toMovieDetail() = MovieDetail(
+fun MovieDetailDTO.toMovieDetail() = MovieDetail(
     budget,
     credits.toCredits(),
     externalIds.toExternal(),
@@ -54,11 +54,11 @@ internal fun MovieDetailDTO.toMovieDetail() = MovieDetail(
     voteCount
 )
 
-internal fun MovieListDTO.toMovieList() = MovieList(results.map { it.toMovie() }, totalResults)
+fun MovieListDTO.toMovieList() = MovieList(results.map { it.toMovie() }, totalResults)
 
-internal fun PersonDTO.toPerson() = Person(character, department, id, job, knownForDepartment, name, profilePath)
+fun PersonDTO.toPerson() = Person(character, department, id, job, knownForDepartment, name, profilePath)
 
-internal fun PersonDetailDTO.toPersonDetail() = PersonDetail(
+fun PersonDetailDTO.toPersonDetail() = PersonDetail(
     alsoKnownAs,
     biography,
     birthday,
@@ -76,11 +76,11 @@ internal fun PersonDetailDTO.toPersonDetail() = PersonDetail(
     tvCredits.toTvCredits()
 )
 
-internal fun PersonListDTO.toPersonList() = PersonList(results.map { it.toPerson() }, totalResults)
+fun PersonListDTO.toPersonList() = PersonList(results.map { it.toPerson() }, totalResults)
 
-internal fun SeasonDTO.toSeason() = Season(airDate, episodeCount, name, posterPath, seasonNumber)
+fun SeasonDTO.toSeason() = Season(airDate, episodeCount, name, posterPath, seasonNumber)
 
-internal fun SeasonDetailDTO.toSeasonDetail() = SeasonDetail(
+fun SeasonDetailDTO.toSeasonDetail() = SeasonDetail(
     airDate,
     credits.toCredits(),
     episodes.map { it.toEpisode() },
@@ -92,11 +92,11 @@ internal fun SeasonDetailDTO.toSeasonDetail() = SeasonDetail(
     videos.toVideoList()
 )
 
-internal fun TvDTO.toTv() = Tv(character, firstAirDate, id, job, name, overview, posterPath, voteAverage)
+fun TvDTO.toTv() = Tv(character, firstAirDate, id, job, name, overview, posterPath, voteAverage)
 
-internal fun TvCreditsDTO.toTvCredits() = TvCredits(cast.map { it.toTv() }, crew.map { it.toTv() })
+fun TvCreditsDTO.toTvCredits() = TvCredits(cast.map { it.toTv() }, crew.map { it.toTv() })
 
-internal fun TvDetailDTO.toTvDetail() = TvDetail(
+fun TvDetailDTO.toTvDetail() = TvDetail(
     createdBy.map { it.toCreator() },
     credits.toCredits(),
     episodeRunTime,
@@ -127,8 +127,8 @@ internal fun TvDetailDTO.toTvDetail() = TvDetail(
     voteCount
 )
 
-internal fun TvListDTO.toTvList() = TvList(results.map { it.toTv() }, totalResults)
+fun TvListDTO.toTvList() = TvList(results.map { it.toTv() }, totalResults)
 
-internal fun VideoDTO.toVideo() = Video(key, name, publishedAt, site, type)
+fun VideoDTO.toVideo() = Video(key, name, publishedAt, site, type)
 
-internal fun VideoListDTO.toVideoList() = VideoList(results.map { it.toVideo() })
+fun VideoListDTO.toVideoList() = VideoList(results.map { it.toVideo() })

@@ -23,40 +23,44 @@ data class PersonDetail(
     val profilePath: String?,
     val tvCredits: TvCredits
 ) {
-    fun calcCurrentAge(context: Context): String {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !birthday.isNullOrEmpty() && deathday.isNullOrEmpty()) {
-            val birthYear = birthday.subSequence(0, 4).toString().toInt()
-            val birthMonth = birthday.subSequence(5, 7).toString().toInt()
-            val birthDay = birthday.subSequence(8, 10).toString().toInt()
-            val currentAge = Period.between(LocalDate.of(birthYear, birthMonth, birthDay), LocalDate.now()).years
+    private fun String?.parseYear() = this?.subSequence(0, 4).toString().toInt()
+    private fun String?.parseMonth() = this?.subSequence(5, 7).toString().toInt()
+    private fun String?.parseDay() = this?.subSequence(8, 10).toString().toInt()
 
-            context.getString(R.string.detail_current_age, currentAge)
-        } else ""
-    }
+    fun calcCurrentAge(context: Context) = if (
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
+        !birthday.isNullOrEmpty() &&
+        deathday.isNullOrEmpty()
+    ) {
+        val currentAge = Period.between(
+            LocalDate.of(birthday.parseYear(), birthday.parseMonth(), birthday.parseDay()),
+            LocalDate.now()
+        ).years
 
-    fun calcDeathAge(context: Context): String {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !birthday.isNullOrEmpty() && !deathday.isNullOrEmpty()) {
-            val birthYear = birthday.subSequence(0, 4).toString().toInt()
-            val birthMonth = birthday.subSequence(5, 7).toString().toInt()
-            val birthDay = birthday.subSequence(8, 10).toString().toInt()
+        context.getString(R.string.detail_current_age, currentAge)
+    } else ""
 
-            val deathYear = deathday.subSequence(0, 4).toString().toInt()
-            val deathMonth = deathday.subSequence(5, 7).toString().toInt()
-            val deathDay = deathday.subSequence(8, 10).toString().toInt()
-            val deathAge = Period.between(LocalDate.of(birthYear, birthMonth, birthDay), LocalDate.of(deathYear, deathMonth, deathDay)).years
+    fun calcDeathAge(context: Context) = if (
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
+        !birthday.isNullOrEmpty() &&
+        !deathday.isNullOrEmpty()
+    ) {
+        val deathAge = Period.between(
+            LocalDate.of(birthday.parseYear(), birthday.parseMonth(), birthday.parseDay()),
+            LocalDate.of(deathday.parseYear(), deathday.parseMonth(), deathday.parseDay())
+        ).years
 
-            context.getString(R.string.detail_death_age, deathAge)
-        } else ""
-    }
+        context.getString(R.string.detail_death_age, deathAge)
+    } else ""
 
-    fun setGenderText(context: Context): String = when (gender) {
+    fun setGenderText(context: Context) = when (gender) {
         1 -> context.getString(R.string.gender_female)
         2 -> context.getString(R.string.gender_male)
         3 -> context.getString(R.string.gender_non_binary)
         else -> ""
     }
 
-    fun getNames(): String = alsoKnownAs.joinToString { it }
+    fun getNames() = alsoKnownAs.joinToString { it }
 
     companion object {
         val empty = PersonDetail(

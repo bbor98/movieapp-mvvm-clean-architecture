@@ -102,26 +102,24 @@ class MovieListsViewModel @Inject constructor(
         }
     }
 
-    fun getTrendingMovieTrailer(movieId: Int): String {
-        return runBlocking {
-            var videoKey = ""
+    fun getTrendingMovieTrailer(movieId: Int) = runBlocking {
+        var videoKey = ""
 
-            coroutineScope {
-                getTrendingVideos(MediaType.MOVIE, movieId).collect { response ->
-                    when (response) {
-                        is Resource.Success -> {
-                            videoKey = response.data.filterVideos(true).last().key
-                            _uiState.value = UiState.successState()
-                        }
-                        is Resource.Error -> {
-                            _uiState.value = UiState.errorState(false, response.message)
-                        }
+        coroutineScope {
+            getTrendingVideos(MediaType.MOVIE, movieId).collect { response ->
+                when (response) {
+                    is Resource.Success -> {
+                        videoKey = response.data.filterVideos(true).last().key
+                        _uiState.value = UiState.successState()
+                    }
+                    is Resource.Error -> {
+                        _uiState.value = UiState.errorState(false, response.message)
                     }
                 }
             }
-
-            videoKey
         }
+
+        videoKey
     }
 
     fun getNowPlayingMoviesInSelectedRegion(countryName: String, countryCode: String) {
@@ -145,7 +143,6 @@ class MovieListsViewModel @Inject constructor(
                     fetchList()
                     fetchList(Constants.LIST_ID_POPULAR)
                     fetchList(Constants.LIST_ID_TOP_RATED)
-                    //fetchList(Constants.LIST_ID_NOW_PLAYING)
                     fetchList(Constants.LIST_ID_UPCOMING)
                 }
             }

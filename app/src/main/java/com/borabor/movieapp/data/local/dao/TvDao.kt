@@ -5,7 +5,6 @@ import com.borabor.movieapp.data.local.entity.FavoriteTvEntity
 
 @Dao
 interface TvDao {
-
     @Query("SELECT * FROM favoritetventity ORDER BY date_added DESC")
     suspend fun getAllTvs(): List<FavoriteTvEntity>
 
