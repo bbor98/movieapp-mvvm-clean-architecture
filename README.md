@@ -13,7 +13,7 @@ A movie & TV show exploration app that implements <b>MVVM</b> design pattern by 
 </p>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/88214480/176362730-6db16cbc-7ed5-44e1-9c1a-33527e7aa378.jpg"/>
+<img src="https://user-images.githubusercontent.com/88214480/192819481-1dd78b28-4eaf-41d9-a76c-e35992824fcb.png"/>
 </p>
 
 ## ✨ Features
@@ -101,7 +101,7 @@ Consists of three packages:
 This is a learning project. I'm not claiming that this project implements clean architecture immaculately, I'm still in the learning phase. I will update the project as I learn more about clean architecture and realize my mistakes. I'm also open to any kind of advice to make the project's code quality better.
 
 ## 📚 Libraries
-- [JetPack](https://developer.android.com/jetpack) libraries
+- [Jetpack](https://developer.android.com/jetpack) libraries
   - [Navigation](https://developer.android.com/guide/navigation) - Handling navigation between destinations within the app
   - [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - Handling lifecycles with lifecycle-aware component
   - [DataBinding](https://developer.android.com/topic/libraries/data-binding) - Binding UI components in layouts to data sources using a declarative format
