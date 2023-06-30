@@ -1,7 +1,12 @@
 package com.borabor.movieapp.presentation.ui.search
 
 import androidx.lifecycle.viewModelScope
-import com.borabor.movieapp.domain.model.*
+import com.borabor.movieapp.domain.model.Movie
+import com.borabor.movieapp.domain.model.MovieList
+import com.borabor.movieapp.domain.model.Person
+import com.borabor.movieapp.domain.model.PersonList
+import com.borabor.movieapp.domain.model.Tv
+import com.borabor.movieapp.domain.model.TvList
 import com.borabor.movieapp.domain.usecase.GetSearchResults
 import com.borabor.movieapp.presentation.ui.base.BaseViewModel
 import com.borabor.movieapp.util.MediaType
@@ -58,25 +63,26 @@ class SearchViewModel @Inject constructor(private val getSearchResults: GetSearc
             when (response) {
                 is Resource.Success -> {
                     when (mediaType) {
-                        MediaType.MOVIE -> {
-                            val movieList = response.data as MovieList
-                            _movieResults.value = if (isQueryChanged) movieList.results else _movieResults.value + movieList.results
-                            _movieTotalResults.value = movieList.totalResults
+                        MediaType.MOVIE -> with(response.data as MovieList) {
+                            _movieResults.value = if (isQueryChanged) results else _movieResults.value + results
+                            _movieTotalResults.value = totalResults
                         }
-                        MediaType.TV -> {
-                            val tvList = response.data as TvList
-                            _tvResults.value = if (isQueryChanged) tvList.results else _tvResults.value + tvList.results
-                            _tvTotalResults.value = tvList.totalResults
+
+                        MediaType.TV -> with(response.data as TvList) {
+                            _tvResults.value = if (isQueryChanged) results else _tvResults.value + results
+                            _tvTotalResults.value = totalResults
                         }
-                        MediaType.PERSON -> {
-                            val personList = response.data as PersonList
-                            _personResults.value = if (isQueryChanged) personList.results else _personResults.value + personList.results
-                            _personTotalResults.value = personList.totalResults
+
+                        MediaType.PERSON -> with(response.data as PersonList) {
+                            _personResults.value = if (isQueryChanged) results else _personResults.value + results
+                            _personTotalResults.value = totalResults
                         }
                     }
+
                     areResponsesSuccessful.add(true)
                     isInitial = false
                 }
+
                 is Resource.Error -> {
                     errorText = response.message
                     areResponsesSuccessful.add(false)

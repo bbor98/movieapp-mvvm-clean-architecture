@@ -14,7 +14,11 @@ class GetSearchResults @Inject constructor(
     private val tvRepository: TvRepository,
     private val personRepository: PersonRepository
 ) {
-    operator fun invoke(mediaType: MediaType, query: String, page: Int): Flow<Resource<Any>> = flow {
+    operator fun invoke(
+        mediaType: MediaType,
+        query: String,
+        page: Int
+    ): Flow<Resource<Any>> = flow {
         emit(
             when (mediaType) {
                 MediaType.MOVIE -> movieRepository.getMovieSearchResults(query, page)

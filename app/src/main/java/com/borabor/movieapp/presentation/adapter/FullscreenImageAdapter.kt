@@ -10,7 +10,9 @@ import com.borabor.movieapp.R
 import com.borabor.movieapp.databinding.ItemFullscreenImageBinding
 import com.borabor.movieapp.domain.model.Image
 
-class FullscreenImageAdapter(private val onClick: () -> Unit) : ListAdapter<Image, FullscreenImageAdapter.ViewHolder>(DIFF_CALLBACK) {
+class FullscreenImageAdapter(
+    private val onClick: () -> Unit
+) : ListAdapter<Image, FullscreenImageAdapter.ViewHolder>(DiffCallback) {
     inner class ViewHolder(val view: ItemFullscreenImageBinding) : RecyclerView.ViewHolder(view.root) {
         init {
             view.photoView.setOnClickListener { onClick() }
@@ -25,15 +27,8 @@ class FullscreenImageAdapter(private val onClick: () -> Unit) : ListAdapter<Imag
         holder.view.image = getItem(position)
     }
 
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Image>() {
-            override fun areItemsTheSame(oldItem: Image, newItem: Image): Boolean {
-                return oldItem.filePath == newItem.filePath
-            }
-
-            override fun areContentsTheSame(oldItem: Image, newItem: Image): Boolean {
-                return oldItem == newItem
-            }
-        }
+    object DiffCallback : DiffUtil.ItemCallback<Image>() {
+        override fun areItemsTheSame(oldItem: Image, newItem: Image): Boolean = oldItem.filePath == newItem.filePath
+        override fun areContentsTheSame(oldItem: Image, newItem: Image): Boolean = oldItem == newItem
     }
 }

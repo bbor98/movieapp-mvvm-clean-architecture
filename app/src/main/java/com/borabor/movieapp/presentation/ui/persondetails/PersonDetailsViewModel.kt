@@ -41,6 +41,7 @@ class PersonDetailsViewModel @Inject constructor(private val getDetails: GetDeta
                         _details.value = response.data as PersonDetail
                         _uiState.value = UiState.successState()
                     }
+
                     is Resource.Error -> {
                         _uiState.value = UiState.errorState(errorText = response.message)
                     }
@@ -57,6 +58,7 @@ class PersonDetailsViewModel @Inject constructor(private val getDetails: GetDeta
                 _movieSeeAllList.value = movieList.cast
                 _movieSeeAllTitle.value = title + " (${movieList.cast.size})"
             }
+
             PersonDetailsActivity.CreditsType.CREW -> {
                 _movieSeeAllList.value = movieList.crew
                 _movieSeeAllTitle.value = title + " (${movieList.crew.size})"
@@ -72,6 +74,7 @@ class PersonDetailsViewModel @Inject constructor(private val getDetails: GetDeta
                 _tvSeeAllList.value = tvList.cast
                 _tvSeeAllTitle.value = title + " (${tvList.cast.size})"
             }
+
             PersonDetailsActivity.CreditsType.CREW -> {
                 _tvSeeAllList.value = tvList.crew
                 _tvSeeAllTitle.value = title + " (${tvList.crew.size})"

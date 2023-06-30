@@ -47,11 +47,21 @@ class MovieListsFragment : BaseFragment<FragmentMovieListsBinding>(R.layout.frag
         }
 
         setupSpinner()
-        collectFlows(listOf(::collectTrendingMovies, ::collectPopularMovies, ::collectTopRatedMovies, ::collectNowPlayingMovies, ::collectUpcomingMovies, ::collectUiState))
+
+        collectFlows(
+            listOf(
+                ::collectTrendingMovies,
+                ::collectPopularMovies,
+                ::collectTopRatedMovies,
+                ::collectNowPlayingMovies,
+                ::collectUpcomingMovies,
+                ::collectUiState
+            )
+        )
     }
 
     private fun playTrailer(movieId: Int) {
-        val videoKey = viewModel.getTrendingMovieTrailer(movieId)
+        val videoKey = viewModel.getTrendingMovieTrailerKey(movieId)
         if (videoKey.isEmpty()) showSnackbar(
             message = getString(R.string.trending_trailer_error),
             indefinite = false,

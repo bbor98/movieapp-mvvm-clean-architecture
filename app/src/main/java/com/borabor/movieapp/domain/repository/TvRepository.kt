@@ -1,6 +1,11 @@
 package com.borabor.movieapp.domain.repository
 
-import com.borabor.movieapp.domain.model.*
+import com.borabor.movieapp.domain.model.EpisodeDetail
+import com.borabor.movieapp.domain.model.FavoriteTv
+import com.borabor.movieapp.domain.model.SeasonDetail
+import com.borabor.movieapp.domain.model.TvDetail
+import com.borabor.movieapp.domain.model.TvList
+import com.borabor.movieapp.domain.model.VideoList
 import com.borabor.movieapp.util.Resource
 
 interface TvRepository {

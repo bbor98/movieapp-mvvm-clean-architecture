@@ -15,7 +15,9 @@ class SafeApiCall @Inject constructor(@ApplicationContext val context: Context) 
     suspend inline fun <T> execute(crossinline body: suspend () -> T): Resource<T> {
         return try {
             Resource.Success(
-                withContext(Dispatchers.IO) { body() }
+                withContext(Dispatchers.IO) {
+                    body()
+                }
             )
         } catch (e: Exception) {
             Resource.Error(
@@ -25,6 +27,7 @@ class SafeApiCall @Inject constructor(@ApplicationContext val context: Context) 
                         if (e.code() == 504) context.getString(R.string.error_connection)
                         else context.getString(R.string.error_service)
                     }
+
                     else -> context.getString(R.string.error_unknown)
                 }
             )

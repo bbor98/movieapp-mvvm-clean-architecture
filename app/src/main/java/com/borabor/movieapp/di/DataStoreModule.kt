@@ -24,9 +24,10 @@ object DataStoreModule {
 
     @Singleton
     @Provides
-    fun providePreferencesDataStore(@ApplicationContext context: Context): DataStore<Preferences> = PreferenceDataStoreFactory.create(
-        corruptionHandler = ReplaceFileCorruptionHandler(produceNewData = { emptyPreferences() }),
-        scope = CoroutineScope(Dispatchers.IO + SupervisorJob()),
-        produceFile = { context.preferencesDataStoreFile(USER_PREFERENCES) }
-    )
+    fun providePreferencesDataStore(@ApplicationContext context: Context): DataStore<Preferences> =
+        PreferenceDataStoreFactory.create(
+            corruptionHandler = ReplaceFileCorruptionHandler(produceNewData = { emptyPreferences() }),
+            scope = CoroutineScope(Dispatchers.IO + SupervisorJob()),
+            produceFile = { context.preferencesDataStoreFile(USER_PREFERENCES) }
+        )
 }

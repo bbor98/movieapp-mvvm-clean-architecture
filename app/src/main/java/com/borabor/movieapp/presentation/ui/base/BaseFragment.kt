@@ -43,7 +43,13 @@ abstract class BaseFragment<B : ViewDataBinding>(@LayoutRes private val layoutId
         }
     }
 
-    protected fun showSnackbar(message: String, indefinite: Boolean = true, actionText: String? = null, anchor: Boolean = false, action: (() -> Unit)? = null) {
+    protected fun showSnackbar(
+        message: String,
+        indefinite: Boolean = true,
+        actionText: String? = null,
+        anchor: Boolean = false,
+        action: (() -> Unit)? = null
+    ) {
         val view = activity?.window?.decorView?.rootView
         val length = if (indefinite) Snackbar.LENGTH_INDEFINITE else Snackbar.LENGTH_LONG
         val snackbar = view?.let { Snackbar.make(it, message, length) }

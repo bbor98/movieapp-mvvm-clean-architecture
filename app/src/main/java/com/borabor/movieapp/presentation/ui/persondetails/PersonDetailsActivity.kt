@@ -58,6 +58,7 @@ class PersonDetailsActivity : BaseActivity<ActivityPersonDetailsBinding>(R.layou
                         adapterMovies.submitList(movieCredits.cast)
                         creditsType = CreditsType.CAST
                     }
+
                     1 -> {
                         adapterMovies.submitList(movieCredits.crew)
                         creditsType = CreditsType.CREW
@@ -83,6 +84,7 @@ class PersonDetailsActivity : BaseActivity<ActivityPersonDetailsBinding>(R.layou
                         adapterTvs.submitList(tvCredits.cast)
                         creditsType = CreditsType.CAST
                     }
+
                     1 -> {
                         adapterTvs.submitList(tvCredits.crew)
                         creditsType = CreditsType.CREW

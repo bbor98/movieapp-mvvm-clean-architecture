@@ -16,7 +16,7 @@ import com.borabor.movieapp.util.Constants
 class ImageAdapter(
     private val isPortrait: Boolean = false,
     private val isGrid: Boolean = false
-) : ListAdapter<Image, ImageAdapter.ViewHolder>(DIFF_CALLBACK) {
+) : ListAdapter<Image, ImageAdapter.ViewHolder>(DiffCallback) {
     inner class ViewHolder(val view: ItemImageBinding) : RecyclerView.ViewHolder(view.root) {
         init {
             view.root.setOnClickListener {
@@ -41,15 +41,8 @@ class ImageAdapter(
         }
     }
 
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Image>() {
-            override fun areItemsTheSame(oldItem: Image, newItem: Image): Boolean {
-                return oldItem.filePath == newItem.filePath
-            }
-
-            override fun areContentsTheSame(oldItem: Image, newItem: Image): Boolean {
-                return oldItem == newItem
-            }
-        }
+    object DiffCallback : DiffUtil.ItemCallback<Image>() {
+        override fun areItemsTheSame(oldItem: Image, newItem: Image): Boolean = oldItem.filePath == newItem.filePath
+        override fun areContentsTheSame(oldItem: Image, newItem: Image): Boolean = oldItem == newItem
     }
 }

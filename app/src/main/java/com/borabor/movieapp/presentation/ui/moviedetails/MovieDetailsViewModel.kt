@@ -53,6 +53,7 @@ class MovieDetailsViewModel @Inject constructor(
                         }
                         _uiState.value = UiState.successState()
                     }
+
                     is Resource.Error -> {
                         _uiState.value = UiState.errorState(errorText = response.message)
                     }

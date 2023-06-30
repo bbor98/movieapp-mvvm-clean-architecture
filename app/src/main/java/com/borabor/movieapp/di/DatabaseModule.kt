@@ -15,6 +15,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
+
     @Singleton
     @Provides
     fun provideMovieDao(appDatabase: AppDatabase): MovieDao = appDatabase.movieDao()
@@ -25,9 +26,10 @@ object DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase = Room.databaseBuilder(
-        context,
-        AppDatabase::class.java,
-        "movie-app-db"
-    ).build()
+    fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase =
+        Room.databaseBuilder(
+            context,
+            AppDatabase::class.java,
+            "movie-app-db"
+        ).build()
 }

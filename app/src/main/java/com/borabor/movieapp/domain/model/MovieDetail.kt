@@ -25,8 +25,13 @@ data class MovieDetail(
     val voteCount: Int
 ) {
     fun trimGenreList(): String = genres.joinToString { it.name }
-    fun trimProductionCompanyList(): String = productionCompanies.joinToString { it.name + if (it.originCountry.isNotEmpty()) " (${it.originCountry})" else "" }
+
+    fun trimProductionCompanyList(): String = productionCompanies.joinToString {
+        it.name + if (it.originCountry.isNotEmpty()) " (${it.originCountry})" else ""
+    }
+
     fun trimProductionCountryList(): String = productionCountries.joinToString { it.name }
+
     fun trimSpokenLanguageList(): String = spokenLanguages.joinToString { it.englishName }
 
     companion object {

@@ -13,7 +13,11 @@ class GetByGenre @Inject constructor(
     private val movieRepository: MovieRepository,
     private val tvRepository: TvRepository
 ) {
-    operator fun invoke(mediaType: MediaType, genreId: Int, page: Int): Flow<Resource<Any>> = flow {
+    operator fun invoke(
+        mediaType: MediaType,
+        genreId: Int,
+        page: Int
+    ): Flow<Resource<Any>> = flow {
         emit(
             when (mediaType) {
                 MediaType.MOVIE -> movieRepository.getMoviesByGenre(genreId, page)

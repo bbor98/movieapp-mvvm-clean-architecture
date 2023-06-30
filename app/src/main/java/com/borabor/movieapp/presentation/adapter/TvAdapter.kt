@@ -14,7 +14,7 @@ class TvAdapter(
     private val isTrending: Boolean = false,
     private val isCredits: Boolean = false,
     private val onTrendingFabClick: ((Int) -> Unit)? = null
-) : ListAdapter<Tv, RecyclerView.ViewHolder>(DIFF_CALLBACK) {
+) : ListAdapter<Tv, RecyclerView.ViewHolder>(DiffCallback) {
     inner class HorizontalViewHolder private constructor(val view: ItemTvBinding) : RecyclerView.ViewHolder(view.root) {
         constructor(parent: ViewGroup) : this(ItemTvBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
@@ -41,19 +41,13 @@ class TvAdapter(
                     tv = getItem(position)
                 }
             }
+
             is TrendingViewHolder -> holder.view.tv = getItem(position)
         }
     }
 
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Tv>() {
-            override fun areItemsTheSame(oldItem: Tv, newItem: Tv): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(oldItem: Tv, newItem: Tv): Boolean {
-                return oldItem == newItem
-            }
-        }
+    object DiffCallback : DiffUtil.ItemCallback<Tv>() {
+        override fun areItemsTheSame(oldItem: Tv, newItem: Tv): Boolean = oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: Tv, newItem: Tv): Boolean = oldItem == newItem
     }
 }

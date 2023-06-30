@@ -66,6 +66,7 @@ class TvListsViewModel @Inject constructor(
                     areResponsesSuccessful.add(true)
                     isInitial = false
                 }
+
                 is Resource.Error -> {
                     errorText = response.message
                     areResponsesSuccessful.add(false)
@@ -89,26 +90,25 @@ class TvListsViewModel @Inject constructor(
         }
     }
 
-    fun getTrendingTvTrailer(tvId: Int): String {
-        return runBlocking {
-            var videoKey = ""
+    fun getTrendingTvTrailerKey(tvId: Int): String = runBlocking {
+        var videoKey = ""
 
-            coroutineScope {
-                getTrendingVideos(MediaType.TV, tvId).collect { response ->
-                    when (response) {
-                        is Resource.Success -> {
-                            videoKey = response.data.filterVideos(true).last().key
-                            _uiState.value = UiState.successState()
-                        }
-                        is Resource.Error -> {
-                            _uiState.value = UiState.errorState(false, response.message)
-                        }
+        coroutineScope {
+            getTrendingVideos(MediaType.TV, tvId).collect { response ->
+                when (response) {
+                    is Resource.Success -> {
+                        videoKey = response.data.filterVideos(true).last().key
+                        _uiState.value = UiState.successState()
+                    }
+
+                    is Resource.Error -> {
+                        _uiState.value = UiState.errorState(false, response.message)
                     }
                 }
             }
-
-            videoKey
         }
+
+        videoKey
     }
 
     fun switchAiringTime(airingTime: String) {

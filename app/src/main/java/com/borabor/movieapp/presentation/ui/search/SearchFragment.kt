@@ -43,7 +43,15 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
         setupSearchView()
         setupSpinner()
-        collectFlows(listOf(::collectMovieSearchResults, ::collectTvSearchResults, ::collectPersonSearchResults, ::collectUiState))
+
+        collectFlows(
+            listOf(
+                ::collectMovieSearchResults,
+                ::collectTvSearchResults,
+                ::collectPersonSearchResults,
+                ::collectUiState
+            )
+        )
     }
 
     fun clearSearch() {
@@ -75,12 +83,17 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
                     0 -> {
                         val movieGenreIds = resources.getIntArray(R.array.movie_genre_ids).toTypedArray()
                         val movieGenreNames = resources.getStringArray(R.array.movie_genre_names)
-                        binding.rvGenres.adapter = GenreAdapter(MediaType.MOVIE).apply { submitList(movieGenreIds.zip(movieGenreNames)) }
+                        binding.rvGenres.adapter = GenreAdapter(MediaType.MOVIE).apply {
+                            submitList(movieGenreIds.zip(movieGenreNames))
+                        }
                     }
+
                     1 -> {
                         val tvGenreIds = resources.getIntArray(R.array.tv_genre_ids).toTypedArray()
                         val tvGenreNames = resources.getStringArray(R.array.tv_genre_names)
-                        binding.rvGenres.adapter = GenreAdapter(MediaType.TV).apply { submitList(tvGenreIds.zip(tvGenreNames)) }
+                        binding.rvGenres.adapter = GenreAdapter(MediaType.TV).apply {
+                            submitList(tvGenreIds.zip(tvGenreNames))
+                        }
                     }
                 }
             }

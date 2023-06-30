@@ -6,8 +6,16 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.borabor.movieapp.R
 import com.borabor.movieapp.databinding.ActivitySeeAllBinding
-import com.borabor.movieapp.domain.model.*
-import com.borabor.movieapp.presentation.adapter.*
+import com.borabor.movieapp.domain.model.Image
+import com.borabor.movieapp.domain.model.Movie
+import com.borabor.movieapp.domain.model.Person
+import com.borabor.movieapp.domain.model.Tv
+import com.borabor.movieapp.domain.model.Video
+import com.borabor.movieapp.presentation.adapter.ImageAdapter
+import com.borabor.movieapp.presentation.adapter.MovieAdapter
+import com.borabor.movieapp.presentation.adapter.PersonAdapter
+import com.borabor.movieapp.presentation.adapter.TvAdapter
+import com.borabor.movieapp.presentation.adapter.VideoAdapter
 import com.borabor.movieapp.presentation.ui.base.BaseActivity
 import com.borabor.movieapp.util.Constants
 import com.borabor.movieapp.util.IntentType
@@ -28,6 +36,10 @@ class SeeAllActivity : BaseActivity<ActivitySeeAllBinding>(R.layout.activity_see
             binding.recyclerView.layoutManager = GridLayoutManager(this, if (isLandscape || intentType == IntentType.VIDEOS) 2 else 3)
         }
 
+    private val movieAdapter by lazy { MovieAdapter(isGrid = true) }
+    private val tvAdapter by lazy { TvAdapter(isGrid = true) }
+    private val personAdapter by lazy { PersonAdapter(isGrid = true) }
+
     private var mediaType: Parcelable? = null
     private var listId: String? = null
     private var region: String? = null
@@ -36,10 +48,6 @@ class SeeAllActivity : BaseActivity<ActivitySeeAllBinding>(R.layout.activity_see
 
     var intentType: Parcelable? = null
     var title: String? = null
-
-    val movieAdapter by lazy { MovieAdapter(isGrid = true) }
-    val tvAdapter by lazy { TvAdapter(isGrid = true) }
-    val personAdapter by lazy { PersonAdapter(isGrid = true) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,11 +85,13 @@ class SeeAllActivity : BaseActivity<ActivitySeeAllBinding>(R.layout.activity_see
                 MediaType.TV -> TvAdapter(isGrid = true, isCredits = true).apply { submitList(list as List<Tv>) }
                 else -> throw IllegalArgumentException(Constants.ILLEGAL_ARGUMENT_MEDIA_TYPE)
             }
+
             IntentType.RECOMMENDATIONS -> when (mediaType) {
                 MediaType.MOVIE -> MovieAdapter(isGrid = true).apply { submitList(list as List<Movie>) }
                 MediaType.TV -> TvAdapter(isGrid = true).apply { submitList(list as List<Tv>) }
                 else -> throw IllegalArgumentException(Constants.ILLEGAL_ARGUMENT_MEDIA_TYPE)
             }
+
             else -> {
                 when (mediaType) {
                     MediaType.MOVIE -> movieAdapter
@@ -101,10 +111,12 @@ class SeeAllActivity : BaseActivity<ActivitySeeAllBinding>(R.layout.activity_see
                     val movieList = results as Set<Movie>
                     movieAdapter.submitList(movieList.toList())
                 }
+
                 MediaType.TV -> {
                     val tvList = results as Set<Tv>
                     tvAdapter.submitList(tvList.toList())
                 }
+
                 MediaType.PERSON -> {
                     val personList = results as Set<Person>
                     personAdapter.submitList(personList.toList())

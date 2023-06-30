@@ -11,9 +11,10 @@ import com.borabor.movieapp.databinding.ItemGenreBinding
 import com.borabor.movieapp.domain.model.Genre
 import com.borabor.movieapp.util.MediaType
 
-class GenreAdapter(private val mediaType: MediaType) : ListAdapter<Pair<Int, String>, GenreAdapter.ViewHolder>(DIFF_CALLBACK) {
-    inner class ViewHolder(val view: ItemGenreBinding) : RecyclerView.ViewHolder(view.root) {
-    }
+class GenreAdapter(
+    private val mediaType: MediaType
+) : ListAdapter<Pair<Int, String>, GenreAdapter.ViewHolder>(DiffCallback) {
+    inner class ViewHolder(val view: ItemGenreBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_genre, parent, false))
@@ -26,15 +27,8 @@ class GenreAdapter(private val mediaType: MediaType) : ListAdapter<Pair<Int, Str
         }
     }
 
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Pair<Int, String>>() {
-            override fun areItemsTheSame(oldItem: Pair<Int, String>, newItem: Pair<Int, String>): Boolean {
-                return oldItem.first == newItem.first
-            }
-
-            override fun areContentsTheSame(oldItem: Pair<Int, String>, newItem: Pair<Int, String>): Boolean {
-                return oldItem == newItem
-            }
-        }
+    object DiffCallback : DiffUtil.ItemCallback<Pair<Int, String>>() {
+        override fun areItemsTheSame(oldItem: Pair<Int, String>, newItem: Pair<Int, String>): Boolean = oldItem.first == newItem.first
+        override fun areContentsTheSame(oldItem: Pair<Int, String>, newItem: Pair<Int, String>): Boolean = oldItem == newItem
     }
 }

@@ -1,7 +1,11 @@
 package com.borabor.movieapp.data.repository
 
 import com.borabor.movieapp.data.local.dao.MovieDao
-import com.borabor.movieapp.data.mapper.*
+import com.borabor.movieapp.data.mapper.toFavoriteMovie
+import com.borabor.movieapp.data.mapper.toFavoriteMovieEntity
+import com.borabor.movieapp.data.mapper.toMovieDetail
+import com.borabor.movieapp.data.mapper.toMovieList
+import com.borabor.movieapp.data.mapper.toVideoList
 import com.borabor.movieapp.data.remote.api.MovieApi
 import com.borabor.movieapp.domain.model.FavoriteMovie
 import com.borabor.movieapp.domain.model.MovieDetail

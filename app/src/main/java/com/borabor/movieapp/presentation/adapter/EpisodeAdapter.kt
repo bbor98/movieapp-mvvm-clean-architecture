@@ -13,7 +13,7 @@ import com.borabor.movieapp.domain.model.Episode
 class EpisodeAdapter(
     private val backgroundColor: Int,
     private val onItemClicked: (episode: Episode) -> Unit,
-) : ListAdapter<Episode, EpisodeAdapter.ViewHolder>(DIFF_CALLBACK) {
+) : ListAdapter<Episode, EpisodeAdapter.ViewHolder>(DiffCallback) {
     inner class ViewHolder(val view: ItemEpisodeBinding) : RecyclerView.ViewHolder(view.root) {
         init {
             view.root.setOnClickListener {
@@ -33,15 +33,8 @@ class EpisodeAdapter(
         }
     }
 
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Episode>() {
-            override fun areItemsTheSame(oldItem: Episode, newItem: Episode): Boolean {
-                return oldItem.episodeNumber == newItem.episodeNumber
-            }
-
-            override fun areContentsTheSame(oldItem: Episode, newItem: Episode): Boolean {
-                return oldItem == newItem
-            }
-        }
+    object DiffCallback : DiffUtil.ItemCallback<Episode>() {
+        override fun areItemsTheSame(oldItem: Episode, newItem: Episode): Boolean = oldItem.episodeNumber == newItem.episodeNumber
+        override fun areContentsTheSame(oldItem: Episode, newItem: Episode): Boolean = oldItem == newItem
     }
 }

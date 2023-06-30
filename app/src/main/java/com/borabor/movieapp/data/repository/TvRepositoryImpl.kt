@@ -1,9 +1,20 @@
 package com.borabor.movieapp.data.repository
 
 import com.borabor.movieapp.data.local.dao.TvDao
-import com.borabor.movieapp.data.mapper.*
+import com.borabor.movieapp.data.mapper.toEpisodeDetail
+import com.borabor.movieapp.data.mapper.toFavoriteTv
+import com.borabor.movieapp.data.mapper.toFavoriteTvEntity
+import com.borabor.movieapp.data.mapper.toSeasonDetail
+import com.borabor.movieapp.data.mapper.toTvDetail
+import com.borabor.movieapp.data.mapper.toTvList
+import com.borabor.movieapp.data.mapper.toVideoList
 import com.borabor.movieapp.data.remote.api.TvApi
-import com.borabor.movieapp.domain.model.*
+import com.borabor.movieapp.domain.model.EpisodeDetail
+import com.borabor.movieapp.domain.model.FavoriteTv
+import com.borabor.movieapp.domain.model.SeasonDetail
+import com.borabor.movieapp.domain.model.TvDetail
+import com.borabor.movieapp.domain.model.TvList
+import com.borabor.movieapp.domain.model.VideoList
 import com.borabor.movieapp.domain.repository.TvRepository
 import com.borabor.movieapp.util.Resource
 import com.borabor.movieapp.util.SafeApiCall
@@ -52,7 +63,11 @@ class TvRepositoryImpl @Inject constructor(
 
     override suspend fun tvExists(tvId: Int): Boolean = dao.tvExists(tvId)
 
-    override suspend fun insertTv(tv: FavoriteTv) = dao.insertTv(tv.toFavoriteTvEntity())
+    override suspend fun insertTv(tv: FavoriteTv) {
+        dao.insertTv(tv.toFavoriteTvEntity())
+    }
 
-    override suspend fun deleteTv(tv: FavoriteTv) = dao.deleteTv(tv.toFavoriteTvEntity())
+    override suspend fun deleteTv(tv: FavoriteTv) {
+        dao.deleteTv(tv.toFavoriteTvEntity())
+    }
 }

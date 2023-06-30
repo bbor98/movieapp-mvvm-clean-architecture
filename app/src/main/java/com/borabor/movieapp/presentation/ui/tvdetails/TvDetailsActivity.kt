@@ -4,7 +4,11 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.borabor.movieapp.R
 import com.borabor.movieapp.databinding.ActivityTvDetailsBinding
-import com.borabor.movieapp.presentation.adapter.*
+import com.borabor.movieapp.presentation.adapter.ImageAdapter
+import com.borabor.movieapp.presentation.adapter.PersonAdapter
+import com.borabor.movieapp.presentation.adapter.SeasonAdapter
+import com.borabor.movieapp.presentation.adapter.TvAdapter
+import com.borabor.movieapp.presentation.adapter.VideoAdapter
 import com.borabor.movieapp.presentation.ui.base.BaseActivity
 import com.borabor.movieapp.util.playYouTubeVideo
 import dagger.hilt.android.AndroidEntryPoint

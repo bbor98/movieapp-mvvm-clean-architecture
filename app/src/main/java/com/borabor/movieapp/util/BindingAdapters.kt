@@ -63,7 +63,12 @@ fun View.setHeight(height: Float) {
 }
 
 @BindingAdapter("detailMediaType", "detailId", "detailImageUrl", "seasonNumber", requireAll = false)
-fun View.setDetailsIntent(mediaType: MediaType, id: Int, imageUrl: String?, seasonNumber: Int?) {
+fun View.setDetailsIntent(
+    mediaType: MediaType,
+    id: Int,
+    imageUrl: String?,
+    seasonNumber: Int?
+) {
     var backgroundColor = ContextCompat.getColor(context, R.color.day_night_inverse)
 
     imageUrl?.let {
@@ -128,8 +133,12 @@ fun View.setSeeAllIntent(
 }
 
 @BindingAdapter("android:layout_marginBottom", "isImage", requireAll = false)
-fun View.setLayoutMarginBottom(isGrid: Boolean, isImage: Boolean) {
+fun View.setLayoutMarginBottom(
+    isGrid: Boolean,
+    isImage: Boolean
+) {
     val params = layoutParams as ViewGroup.MarginLayoutParams
+
     params.bottomMargin = resources.getDimension(
         if (isGrid) {
             if (isImage) R.dimen.bottom_margin_small else R.dimen.bottom_margin
@@ -165,7 +174,12 @@ fun RecyclerView.handleNestedScroll(isNested: Boolean) {
 }
 
 @BindingAdapter("type", "isGrid", "loadMore", "shouldLoadMore", requireAll = false)
-fun RecyclerView.addInfiniteScrollListener(type: Any?, isGrid: Boolean, infiniteScroll: InfiniteScrollListener, shouldLoadMore: Boolean) {
+fun RecyclerView.addInfiniteScrollListener(
+    type: Any?,
+    isGrid: Boolean,
+    infiniteScroll: InfiniteScrollListener,
+    shouldLoadMore: Boolean
+) {
     if (shouldLoadMore) {
         addOnScrollListener(object : RecyclerView.OnScrollListener() {
             private val layoutManagerType = if (isGrid) layoutManager as GridLayoutManager else layoutManager as LinearLayoutManager
@@ -201,7 +215,14 @@ fun RecyclerView.setFixedSize(hasFixedSize: Boolean) {
 
 @SuppressLint("CheckResult")
 @BindingAdapter("imageUrl", "imageMediaType", "imageQuality", "centerCrop", "fitTop", "isThumbnail", requireAll = false)
-fun ImageView.loadImage(posterPath: String?, mediaType: MediaType?, quality: ImageQuality?, centerCrop: Boolean?, fitTop: Boolean, isThumbnail: Boolean) {
+fun ImageView.loadImage(
+    posterPath: String?,
+    mediaType: MediaType?,
+    quality: ImageQuality?,
+    centerCrop: Boolean?,
+    fitTop: Boolean,
+    isThumbnail: Boolean
+) {
     val imageUrl = if (isThumbnail) "https://img.youtube.com/vi/$posterPath/0.jpg" else quality?.imageBaseUrl + posterPath
 
     val errorImage = AppCompatResources.getDrawable(
@@ -232,7 +253,10 @@ fun ImageView.setIconTint(color: Int?) {
 }
 
 @BindingAdapter("externalPlatform", "externalId")
-fun ImageView.setExternals(externalPlatform: ExternalPlatform, externalId: String?) {
+fun ImageView.setExternals(
+    externalPlatform: ExternalPlatform,
+    externalId: String?
+) {
     val uri = (externalPlatform.url ?: "") + externalId
     val packageName = externalPlatform.packageName
 
@@ -269,7 +293,12 @@ fun TextView.setRatingColor(rating: Double) {
 }
 
 @BindingAdapter("activity", "backArrowTint", "seeAllTitle", "titleTextColor", requireAll = false)
-fun Toolbar.setupToolbar(activity: AppCompatActivity, backArrowTint: Int, seeAllTitle: String?, titleTextColor: Int?) {
+fun Toolbar.setupToolbar(
+    activity: AppCompatActivity,
+    backArrowTint: Int,
+    seeAllTitle: String?,
+    titleTextColor: Int?
+) {
     activity.apply {
         setSupportActionBar(this@setupToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -277,7 +306,13 @@ fun Toolbar.setupToolbar(activity: AppCompatActivity, backArrowTint: Int, seeAll
     }
 
     navigationIcon?.setTint(if (backArrowTint != 0) backArrowTint.setTintColor() else ContextCompat.getColor(context, R.color.day_night))
-    if (titleTextColor != null) setTitleTextColor(if (titleTextColor != 0) titleTextColor.setTintColor() else ContextCompat.getColor(context, R.color.day_night))
+
+    if (titleTextColor != null) {
+        setTitleTextColor(
+            if (titleTextColor != 0) titleTextColor.setTintColor()
+            else ContextCompat.getColor(context, R.color.day_night)
+        )
+    }
 
     setNavigationOnClickListener {
         activity.finish()
@@ -285,13 +320,17 @@ fun Toolbar.setupToolbar(activity: AppCompatActivity, backArrowTint: Int, seeAll
 }
 
 @BindingAdapter("collapsingToolbar", "frameLayout", "toolbarTitle", "backgroundColor", requireAll = false)
-fun AppBarLayout.setToolbarCollapseListener(collapsingToolbar: CollapsingToolbarLayout, frameLayout: FrameLayout, toolbarTitle: String, backgroundColor: Int) {
+fun AppBarLayout.setToolbarCollapseListener(
+    collapsingToolbar: CollapsingToolbarLayout,
+    frameLayout: FrameLayout,
+    toolbarTitle: String,
+    backgroundColor: Int
+) {
     var isShow = true
     var scrollRange = -1
-    this.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-        if (scrollRange == -1) {
-            scrollRange = appBarLayout?.totalScrollRange!!
-        }
+
+    addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+        if (scrollRange == -1) scrollRange = appBarLayout?.totalScrollRange!!
 
         if (scrollRange + verticalOffset == 0) {
             frameLayout.isVisible = false
@@ -307,7 +346,10 @@ fun AppBarLayout.setToolbarCollapseListener(collapsingToolbar: CollapsingToolbar
 }
 
 @BindingAdapter("expand", "expandIcon")
-fun ConstraintLayout.setExpandableLayout(expandableLayout: ExpandableLayout, expandIcon: ImageView) {
+fun ConstraintLayout.setExpandableLayout(
+    expandableLayout: ExpandableLayout,
+    expandIcon: ImageView
+) {
     setOnClickListener {
         expandableLayout.toggle()
         expandIcon.animate().rotationBy(-180f)
@@ -317,7 +359,11 @@ fun ConstraintLayout.setExpandableLayout(expandableLayout: ExpandableLayout, exp
 }
 
 @BindingAdapter("genreMediaType", "genres", "chipTint", requireAll = false)
-fun ChipGroup.setGenreChips(mediaType: MediaType, genreList: List<Genre>?, backgroundColor: Int) {
+fun ChipGroup.setGenreChips(
+    mediaType: MediaType,
+    genreList: List<Genre>?,
+    backgroundColor: Int
+) {
     genreList?.let {
         it.forEach { genre ->
             addView(

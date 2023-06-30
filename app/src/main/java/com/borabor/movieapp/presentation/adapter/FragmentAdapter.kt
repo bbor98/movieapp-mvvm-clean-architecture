@@ -10,7 +10,9 @@ import com.borabor.movieapp.presentation.ui.movielists.MovieListsFragment
 import com.borabor.movieapp.presentation.ui.tvlists.TvListsFragment
 import com.borabor.movieapp.util.Constants
 
-class FragmentAdapter(private val fragment: Fragment) : FragmentStateAdapter(fragment.childFragmentManager, fragment.viewLifecycleOwner.lifecycle) {
+class FragmentAdapter(
+    private val fragment: Fragment
+) : FragmentStateAdapter(fragment.childFragmentManager, fragment.viewLifecycleOwner.lifecycle) {
     private val homeFragments = listOf(MovieListsFragment(), TvListsFragment())
     private val favoritesFragments = listOf(FavoriteMoviesFragment(), FavoriteTvsFragment())
 

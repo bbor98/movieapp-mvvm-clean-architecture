@@ -43,11 +43,20 @@ class TvListsFragment : BaseFragment<FragmentTvListsBinding>(R.layout.fragment_t
         }
 
         setupSpinner()
-        collectFlows(listOf(::collectTrendingTvs, ::collectPopularTvs, ::collectTopRatedTvs, ::collectAiringTvs, ::collectUiState))
+
+        collectFlows(
+            listOf(
+                ::collectTrendingTvs,
+                ::collectPopularTvs,
+                ::collectTopRatedTvs,
+                ::collectAiringTvs,
+                ::collectUiState
+            )
+        )
     }
 
     private fun playTrailer(tvId: Int) {
-        val videoKey = viewModel.getTrendingTvTrailer(tvId)
+        val videoKey = viewModel.getTrendingTvTrailerKey(tvId)
         if (videoKey.isEmpty()) showSnackbar(
             message = getString(R.string.trending_trailer_error),
             indefinite = false,

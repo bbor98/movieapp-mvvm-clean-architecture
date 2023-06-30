@@ -9,7 +9,11 @@ import com.borabor.movieapp.domain.usecase.GetByGenre
 import com.borabor.movieapp.domain.usecase.GetList
 import com.borabor.movieapp.domain.usecase.GetSearchResults
 import com.borabor.movieapp.presentation.ui.base.BaseViewModel
-import com.borabor.movieapp.util.*
+import com.borabor.movieapp.util.Constants
+import com.borabor.movieapp.util.IntentType
+import com.borabor.movieapp.util.MediaType
+import com.borabor.movieapp.util.Resource
+import com.borabor.movieapp.util.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -49,8 +53,10 @@ class SeeAllViewModel @Inject constructor(
                             MediaType.TV -> (response.data as TvList).results
                             else -> throw IllegalArgumentException(Constants.ILLEGAL_ARGUMENT_MEDIA_TYPE)
                         }
+
                         _uiState.value = UiState.successState()
                     }
+
                     is Resource.Error -> {
                         _uiState.value = UiState.errorState(errorText = response.message)
                     }
@@ -73,8 +79,10 @@ class SeeAllViewModel @Inject constructor(
                             MediaType.TV -> (response.data as TvList).results
                             else -> (response.data as PersonList).results
                         }
+
                         _uiState.value = UiState.successState()
                     }
+
                     is Resource.Error -> {
                         _uiState.value = UiState.errorState(errorText = response.message)
                     }
@@ -97,8 +105,10 @@ class SeeAllViewModel @Inject constructor(
                             MediaType.TV -> (response.data as TvList).results
                             else -> throw IllegalArgumentException(Constants.ILLEGAL_ARGUMENT_MEDIA_TYPE)
                         }
+
                         _uiState.value = UiState.successState()
                     }
+
                     is Resource.Error -> {
                         _uiState.value = UiState.errorState(errorText = response.message)
                     }
@@ -118,7 +128,13 @@ class SeeAllViewModel @Inject constructor(
         }
     }
 
-    fun initRequest(intentType: Parcelable?, mediaType: Parcelable?, detailId: Int?, listId: String?, region: String?) {
+    fun initRequest(
+        intentType: Parcelable?,
+        mediaType: Parcelable?,
+        detailId: Int?,
+        listId: String?,
+        region: String?
+    ) {
         this.intentType = intentType
         this.mediaType = mediaType
         this.detailId = detailId

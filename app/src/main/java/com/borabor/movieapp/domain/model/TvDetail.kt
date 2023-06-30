@@ -30,17 +30,26 @@ data class TvDetail(
     val voteAverage: Double,
     val voteCount: Int
 ) {
-    fun getAiringDates() = if (!firstAirDate.isNullOrEmpty()) {
+    fun getAiringDates(): String = if (!firstAirDate.isNullOrEmpty()) {
         if (status != "Ended") firstAirDate.take(4)
         else "${firstAirDate.take(4)} - ${lastAirDate?.take(4)}"
     } else ""
 
-    fun trimCreatorList() = createdBy.joinToString { it.name }
-    fun trimGenreList() = genres.joinToString { it.name }
-    fun trimNetworkList() = networks.joinToString { it.name + if (it.originCountry.isNotEmpty()) " (${it.originCountry})" else "" }
-    fun trimProductionCompanyList() = productionCompanies.joinToString { it.name + if (it.originCountry.isNotEmpty()) " (${it.originCountry})" else "" }
-    fun trimProductionCountryList() = productionCountries.joinToString { it.name }
-    fun trimSpokenLanguageList() = spokenLanguages.joinToString { it.englishName }
+    fun trimCreatorList(): String = createdBy.joinToString { it.name }
+
+    fun trimGenreList(): String = genres.joinToString { it.name }
+
+    fun trimNetworkList(): String = networks.joinToString {
+        it.name + if (it.originCountry.isNotEmpty()) " (${it.originCountry})" else ""
+    }
+
+    fun trimProductionCompanyList(): String = productionCompanies.joinToString {
+        it.name + if (it.originCountry.isNotEmpty()) " (${it.originCountry})" else ""
+    }
+
+    fun trimProductionCountryList(): String = productionCountries.joinToString { it.name }
+
+    fun trimSpokenLanguageList(): String = spokenLanguages.joinToString { it.englishName }
 
     companion object {
         val empty = TvDetail(

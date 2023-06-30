@@ -31,6 +31,7 @@ class SeasonDetailsViewModel @Inject constructor(private val getDetails: GetDeta
                         _seasonDetails.value = response.data as SeasonDetail
                         _uiState.value = UiState.successState()
                     }
+
                     is Resource.Error -> {
                         _uiState.value = UiState.errorState(errorText = response.message)
                     }

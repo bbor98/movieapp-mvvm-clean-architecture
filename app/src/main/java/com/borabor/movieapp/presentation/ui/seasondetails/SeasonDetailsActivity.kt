@@ -73,7 +73,12 @@ class SeasonDetailsActivity : BaseActivity<ActivitySeasonDetailsBinding>(R.layou
         val layoutId = R.layout.layout_bottom_sheet
         val parent = findViewById<NestedScrollView>(R.id.bottomSheetContainer)
 
-        val binding = DataBindingUtil.inflate<LayoutBottomSheetBinding>(LayoutInflater.from(this), layoutId, parent, false).apply {
+        val binding = DataBindingUtil.inflate<LayoutBottomSheetBinding>(
+            LayoutInflater.from(this),
+            layoutId,
+            parent,
+            false
+        ).apply {
             activity = this@SeasonDetailsActivity
             viewModel = this@SeasonDetailsActivity.viewModel
             lifecycleOwner = this@SeasonDetailsActivity

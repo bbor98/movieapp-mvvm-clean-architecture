@@ -10,7 +10,9 @@ import com.borabor.movieapp.R
 import com.borabor.movieapp.databinding.ItemFavoriteMovieBinding
 import com.borabor.movieapp.domain.model.FavoriteMovie
 
-class FavoriteMovieAdapter(private val onItemClicked: (item: FavoriteMovie) -> Unit) : ListAdapter<FavoriteMovie, FavoriteMovieAdapter.ViewHolder>(DIFF_CALLBACK) {
+class FavoriteMovieAdapter(
+    private val onItemClicked: (item: FavoriteMovie) -> Unit
+) : ListAdapter<FavoriteMovie, FavoriteMovieAdapter.ViewHolder>(DiffCallback) {
     inner class ViewHolder(val view: ItemFavoriteMovieBinding) : RecyclerView.ViewHolder(view.root) {
         init {
             view.ivRemove.setOnClickListener { onItemClicked(getItem(adapterPosition)) }
@@ -26,15 +28,8 @@ class FavoriteMovieAdapter(private val onItemClicked: (item: FavoriteMovie) -> U
 
     }
 
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<FavoriteMovie>() {
-            override fun areItemsTheSame(oldItem: FavoriteMovie, newItem: FavoriteMovie): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(oldItem: FavoriteMovie, newItem: FavoriteMovie): Boolean {
-                return oldItem == newItem
-            }
-        }
+    object DiffCallback : DiffUtil.ItemCallback<FavoriteMovie>() {
+        override fun areItemsTheSame(oldItem: FavoriteMovie, newItem: FavoriteMovie): Boolean = oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: FavoriteMovie, newItem: FavoriteMovie): Boolean = oldItem == newItem
     }
 }

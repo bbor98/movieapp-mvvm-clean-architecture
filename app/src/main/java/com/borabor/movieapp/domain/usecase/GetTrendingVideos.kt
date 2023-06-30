@@ -14,7 +14,10 @@ class GetTrendingVideos @Inject constructor(
     private val movieRepository: MovieRepository,
     private val tvRepository: TvRepository
 ) {
-    operator fun invoke(mediaType: MediaType, id: Int): Flow<Resource<VideoList>> = flow {
+    operator fun invoke(
+        mediaType: MediaType,
+        id: Int
+    ): Flow<Resource<VideoList>> = flow {
         emit(
             when (mediaType) {
                 MediaType.MOVIE -> movieRepository.getTrendingMovieTrailers(id)

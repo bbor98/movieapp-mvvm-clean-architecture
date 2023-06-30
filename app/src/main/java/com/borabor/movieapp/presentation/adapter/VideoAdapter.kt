@@ -13,7 +13,7 @@ import com.borabor.movieapp.domain.model.Video
 class VideoAdapter(
     private val isGrid: Boolean = false,
     private val onItemClick: (String) -> Unit
-) : ListAdapter<Video, VideoAdapter.ViewHolder>(DIFF_CALLBACK) {
+) : ListAdapter<Video, VideoAdapter.ViewHolder>(DiffCallback) {
     inner class ViewHolder(val view: ItemVideoBinding) : RecyclerView.ViewHolder(view.root) {
         init {
             view.linearLayout.setOnClickListener {
@@ -33,15 +33,8 @@ class VideoAdapter(
         }
     }
 
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Video>() {
-            override fun areItemsTheSame(oldItem: Video, newItem: Video): Boolean {
-                return oldItem.key == newItem.key
-            }
-
-            override fun areContentsTheSame(oldItem: Video, newItem: Video): Boolean {
-                return oldItem == newItem
-            }
-        }
+    object DiffCallback : DiffUtil.ItemCallback<Video>() {
+        override fun areItemsTheSame(oldItem: Video, newItem: Video): Boolean = oldItem.key == newItem.key
+        override fun areContentsTheSame(oldItem: Video, newItem: Video): Boolean = oldItem == newItem
     }
 }
