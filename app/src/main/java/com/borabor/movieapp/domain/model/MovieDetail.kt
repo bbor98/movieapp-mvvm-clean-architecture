@@ -24,10 +24,10 @@ data class MovieDetail(
     val voteAverage: Double,
     val voteCount: Int
 ) {
-    fun trimGenreList() = genres.joinToString { it.name }
-    fun trimProductionCompanyList() = productionCompanies.joinToString { it.name + if (it.originCountry.isNotEmpty()) " (${it.originCountry})" else "" }
-    fun trimProductionCountryList() = productionCountries.joinToString { it.name }
-    fun trimSpokenLanguageList() = spokenLanguages.joinToString { it.englishName }
+    fun trimGenreList(): String = genres.joinToString { it.name }
+    fun trimProductionCompanyList(): String = productionCompanies.joinToString { it.name + if (it.originCountry.isNotEmpty()) " (${it.originCountry})" else "" }
+    fun trimProductionCountryList(): String = productionCountries.joinToString { it.name }
+    fun trimSpokenLanguageList(): String = spokenLanguages.joinToString { it.englishName }
 
     companion object {
         val empty = MovieDetail(

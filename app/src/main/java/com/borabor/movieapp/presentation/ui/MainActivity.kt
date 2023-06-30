@@ -36,8 +36,9 @@ class MainActivity : AppCompatActivity() {
         if (getIsFirstLaunch()) showAlertDialog()
     }
 
-    private fun getIsFirstLaunch() = runBlocking {
-        dataStore.data.first()[PreferencesKey.IS_FIRST_LAUNCH] ?: true
+    private fun getIsFirstLaunch(): Boolean {
+        val preferences = runBlocking { dataStore.data.first() }
+        return preferences[PreferencesKey.IS_FIRST_LAUNCH] ?: true
     }
 
     private fun setIsFirstLaunch() {

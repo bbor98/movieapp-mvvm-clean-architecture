@@ -14,11 +14,11 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
 
-fun Activity.playYouTubeVideo(videoKey: String) {
+internal fun Activity.playYouTubeVideo(videoKey: String) {
     startActivity(YouTubeStandalonePlayer.createVideoIntent(this, BuildConfig.YOUTUBE_API_KEY, videoKey, 0, true, false))
 }
 
-fun RecyclerView.interceptTouch() {
+internal fun RecyclerView.interceptTouch() {
     addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
         override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
             return if (canScrollHorizontally(RecyclerView.FOCUS_FORWARD)) {
@@ -40,18 +40,20 @@ fun RecyclerView.interceptTouch() {
     })
 }
 
-fun Int.isDarkColor(): Boolean {
+internal fun Int.isDarkColor(): Boolean {
     val darkness = 1 - (0.299 * Color.red(this) + 0.587 * Color.green(this) + 0.114 * Color.blue(this)) / 255
     return darkness >= 0.5
 }
 
-fun Int.setTintColor(reverse: Boolean = false) = if (reverse) {
-    if (this.isDarkColor()) Color.BLACK else Color.WHITE
-} else {
-    if (this.isDarkColor()) Color.WHITE else Color.BLACK
+internal fun Int.setTintColor(reverse: Boolean = false): Int {
+    return if (reverse) {
+        if (this.isDarkColor()) Color.BLACK else Color.WHITE
+    } else {
+        if (this.isDarkColor()) Color.WHITE else Color.BLACK
+    }
 }
 
-fun Int?.formatTime(context: Context) = this?.let {
+internal fun Int?.formatTime(context: Context): String? = this?.let {
     when {
         it == 0 -> return null
         it >= 60 -> {
@@ -63,17 +65,17 @@ fun Int?.formatTime(context: Context) = this?.let {
     }
 }
 
-fun Long.thousandsSeparator(context: Context): String {
+internal fun Long.thousandsSeparator(context: Context): String {
     val symbols = DecimalFormatSymbols()
     symbols.groupingSeparator = context.getString(R.string.thousand_separator).toCharArray()[0]
     return DecimalFormat("#,###", symbols).format(this)
 }
 
-fun Double.round() = (this * 10.0).roundToInt() / 10.0
+internal fun Double.round(): Double = (this * 10.0).roundToInt() / 10.0
 
-fun Double.asPercent() = "%${(this * 10).toInt()}"
+internal fun Double.asPercent(): String = "%${(this * 10).toInt()}"
 
-fun String?.formatDate(): String {
+internal fun String?.formatDate(): String {
     val outputFormat = SimpleDateFormat("dd MMMM, yyyy", Locale.US)
     val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
     return if (!this.isNullOrEmpty()) outputFormat.format(inputFormat.parse(this)) else ""

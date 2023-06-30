@@ -38,6 +38,14 @@ abstract class BaseActivity<B : ViewDataBinding>(@LayoutRes private val layoutId
             else -> setTheme(if (backgroundColor.isDarkColor()) R.style.DetailDarkTheme else R.style.DetailLightTheme)
 
         }
+/*        if (this !is FullscreenImageActivity) {
+            if (this is SeeAllActivity) {
+                if (backgroundColor != 0) {
+                    setTheme(if (backgroundColor.isDarkColor()) R.style.SeeAllDarkTheme else R.style.SeeAllLightTheme)
+                    window.statusBarColor = backgroundColor
+                }
+            } else setTheme(if (backgroundColor.isDarkColor()) R.style.DetailsDarkTheme else R.style.DetailsLightTheme)
+        }*/
 
         binding.apply { defineBindingVariables?.invoke(this) }
     }
