@@ -5,17 +5,17 @@
 
     <data>
 
-        <import type="com.borabor.movieapp.util.IntentType" />
+        <import type="com.borabor.movieapp.util.Content" />
 
-        <import type="com.borabor.movieapp.util.MediaType" />
+        <import type="com.borabor.movieapp.util.Detail" />
 
         <variable
             name="fragment"
-            type="com.borabor.movieapp.presentation.ui.search.SearchFragment" />
+            type="com.borabor.movieapp.presentation.screen.search.SearchFragment" />
 
         <variable
             name="viewModel"
-            type="com.borabor.movieapp.presentation.ui.search.SearchViewModel" />
+            type="com.borabor.movieapp.presentation.screen.search.SearchViewModel" />
 
     </data>
 
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".presentation.ui.search.SearchFragment">
+        tools:context=".presentation.screen.search.SearchFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -44,7 +44,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="@dimen/card_corner_radius"
@@ -96,12 +95,12 @@
                         android:text="@string/title_genres" />
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView2"
+                        android:id="@+id/cardView"
                         style="@style/SpinnerParent"
                         app:layout_constraintStart_toEndOf="@+id/textView">
 
                         <Spinner
-                            android:id="@+id/spGenreMediaType"
+                            android:id="@+id/spMediaType"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:entries="@array/media_type" />
@@ -115,7 +114,7 @@
                         android:background="@color/day_night"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/cardView2"
+                        app:layout_constraintStart_toEndOf="@+id/cardView"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -160,9 +159,9 @@
 
                         <TextView
                             style="@style/SeeAll"
-                            intentType="@{IntentType.SEARCH}"
+                            contentType="@{Content.SEARCH}"
                             isVisible="@{viewModel.movieTotalResults > 3}"
-                            mediaType="@{MediaType.MOVIE}"
+                            seeAllDetailType="@{Detail.MOVIE}"
                             stringId="@{viewModel.query}"
                             title="@{@string/title_see_all_search(viewModel.query, viewModel.movieTotalResults)}" />
 
@@ -173,7 +172,7 @@
                         style="@style/RecyclerView"
                         loadMore="@{viewModel::onLoadMore}"
                         shouldLoadMore="@{true}"
-                        type="@{MediaType.MOVIE}"
+                        type="@{Detail.MOVIE}"
                         android:adapter="@{fragment.adapterMovies}" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
@@ -190,9 +189,9 @@
 
                         <TextView
                             style="@style/SeeAll"
-                            intentType="@{IntentType.SEARCH}"
+                            contentType="@{Content.SEARCH}"
                             isVisible="@{viewModel.tvTotalResults > 3}"
-                            mediaType="@{MediaType.TV}"
+                            seeAllDetailType="@{Detail.TV}"
                             stringId="@{viewModel.query}"
                             title="@{@string/title_see_all_search(viewModel.query, viewModel.tvTotalResults)}" />
 
@@ -203,7 +202,7 @@
                         style="@style/RecyclerView"
                         loadMore="@{viewModel::onLoadMore}"
                         shouldLoadMore="@{true}"
-                        type="@{MediaType.TV}"
+                        type="@{Detail.TV}"
                         android:adapter="@{fragment.adapterTvs}" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
@@ -220,9 +219,9 @@
 
                         <TextView
                             style="@style/SeeAll"
-                            intentType="@{IntentType.SEARCH}"
+                            contentType="@{Content.SEARCH}"
                             isVisible="@{viewModel.personTotalResults > 3}"
-                            mediaType="@{MediaType.PERSON}"
+                            seeAllDetailType="@{Detail.PERSON}"
                             stringId="@{viewModel.query}"
                             title="@{@string/title_see_all_search(viewModel.query, viewModel.personTotalResults)}" />
 
@@ -233,7 +232,7 @@
                         style="@style/RecyclerView"
                         loadMore="@{viewModel::onLoadMore}"
                         shouldLoadMore="@{true}"
-                        type="@{MediaType.PERSON}"
+                        type="@{Detail.PERSON}"
                         android:layout_marginBottom="@dimen/recyclerview_bottom_margin"
                         android:adapter="@{fragment.adapterPeople}" />
 

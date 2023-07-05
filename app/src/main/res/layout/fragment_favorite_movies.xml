@@ -7,18 +7,18 @@
 
         <variable
             name="fragment"
-            type="com.borabor.movieapp.presentation.ui.favoritemovies.FavoriteMoviesFragment" />
+            type="com.borabor.movieapp.presentation.screen.favorites.favoritemovies.FavoriteMoviesFragment" />
 
         <variable
             name="viewModel"
-            type="com.borabor.movieapp.presentation.ui.favoritemovies.FavoriteMoviesViewModel" />
+            type="com.borabor.movieapp.presentation.screen.favorites.favoritemovies.FavoriteMoviesViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.ui.favoritemovies.FavoriteMoviesFragment">
+        tools:context=".presentation.screen.favorites.favoritemovies.FavoriteMoviesFragment">
 
         <TextView
             isVisible="@{viewModel.favoriteMovies.size() == 0}"
@@ -31,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/rvFavoriteMovies"
             fixedSize="@{true}"
             isVisible="@{viewModel.favoriteMovies.size() != 0}"
             android:layout_width="0dp"

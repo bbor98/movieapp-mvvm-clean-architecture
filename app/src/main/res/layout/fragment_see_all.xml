@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.borabor.movieapp.util.Content" />
+
+        <variable
+            name="fragment"
+            type="com.borabor.movieapp.presentation.screen.seeall.SeeAllFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.borabor.movieapp.presentation.screen.seeall.SeeAllViewModel" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@{fragment.backgroundColor}"
+        tools:context=".presentation.screen.seeall.SeeAllFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                backArrowTint="@{fragment.backgroundColor}"
+                fragment="@{fragment}"
+                toolbarTitle="@{fragment.title}"
+                toolbarTitleColor="@{fragment.backgroundColor}"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@{fragment.backgroundColor}"
+                app:layout_scrollFlags="scroll|enterAlways" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSeeAll"
+                hasFixedSize="@{fragment.contentType == Content.EXPLORE_LIST || fragment.contentType == Content.SEARCH || fragment.contentType == Content.GENRE}"
+                isGrid="@{true}"
+                loadMore="@{viewModel::onLoadMore}"
+                shouldLoadMore="@{fragment.contentType == Content.EXPLORE_LIST || fragment.contentType == Content.SEARCH || fragment.contentType == Content.GENRE}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingStart="@dimen/start_margin_small"
+                android:paddingTop="@dimen/top_margin_small"
+                android:scrollbarStyle="outsideOverlay"
+                android:scrollbars="vertical" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                style="@style/Loading"
+                isVisible="@{viewModel.uiState.loading}" />
+
+        </FrameLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

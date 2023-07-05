@@ -34,11 +34,22 @@ enum class ImageQuality(val imageBaseUrl: String) {
 }
 
 @Parcelize
-enum class IntentType : Parcelable {
-    LIST, VIDEOS, CAST, IMAGES, RECOMMENDATIONS, PERSON_CREDITS, SEARCH, GENRE
+enum class Content : Parcelable {
+    EXPLORE_LIST,
+    VIDEOS,
+    CAST,
+    IMAGES,
+    RECOMMENDATIONS,
+    PERSON_CREDITS,
+    SEARCH,
+    GENRE
 }
 
 @Parcelize
-enum class MediaType : Parcelable {
-    MOVIE, TV, PERSON
+enum class Detail : Parcelable {
+    MOVIE,
+    TV,
+    TV_SEASON,
+    TV_EPISODE,
+    PERSON
 }

@@ -1,16 +1,16 @@
 package com.borabor.movieapp.presentation.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.borabor.movieapp.R
 import com.borabor.movieapp.databinding.ItemImageBinding
 import com.borabor.movieapp.domain.model.Image
-import com.borabor.movieapp.presentation.ui.fullscreenimage.FullscreenImageActivity
 import com.borabor.movieapp.util.Constants
 
 class ImageAdapter(
@@ -20,11 +20,12 @@ class ImageAdapter(
     inner class ViewHolder(val view: ItemImageBinding) : RecyclerView.ViewHolder(view.root) {
         init {
             view.root.setOnClickListener {
-                Intent(it.context, FullscreenImageActivity::class.java).apply {
-                    putParcelableArrayListExtra(Constants.IMAGE_LIST, ArrayList(currentList))
-                    putExtra(Constants.ITEM_POSITION, adapterPosition)
-                    it.context.startActivity(this)
-                }
+                val bundle = bundleOf(
+                    Constants.IMAGE_LIST to currentList.toTypedArray(),
+                    Constants.IMAGE_POSITION to adapterPosition
+                )
+
+                view.root.findNavController().navigate(R.id.action_global_fullscreenImageFragment, bundle)
             }
         }
     }

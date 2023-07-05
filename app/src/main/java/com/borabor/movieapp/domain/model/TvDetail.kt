@@ -31,7 +31,7 @@ data class TvDetail(
     val voteCount: Int
 ) {
     fun getAiringDates(): String = if (!firstAirDate.isNullOrEmpty()) {
-        if (status != "Ended") firstAirDate.take(4)
+        if (status != "Ended") "${firstAirDate.take(4)} -"
         else "${firstAirDate.take(4)} - ${lastAirDate?.take(4)}"
     } else ""
 

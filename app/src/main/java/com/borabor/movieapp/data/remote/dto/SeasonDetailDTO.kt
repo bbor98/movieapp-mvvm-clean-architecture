@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class SeasonDetailDTO(
     @SerializedName("air_date")
-    val airDate: String,
+    val airDate: String?,
     @SerializedName("credits")
     val credits: CreditsDTO,
     @SerializedName("episodes")
@@ -26,13 +26,11 @@ data class SeasonDetailDTO(
 
 data class EpisodeDTO(
     @SerializedName("air_date")
-    val airDate: String,
+    val airDate: String?,
     @SerializedName("episode_number")
     val episodeNumber: Int,
     @SerializedName("name")
     val name: String,
-    @SerializedName("overview")
-    val overview: String,
     @SerializedName("season_number")
     val seasonNumber: Int,
     @SerializedName("still_path")

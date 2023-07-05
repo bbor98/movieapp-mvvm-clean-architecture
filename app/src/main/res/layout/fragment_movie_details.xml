@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.borabor.movieapp.util.ExtensionsKt" />
+
+        <import type="com.borabor.movieapp.util.ExternalPlatform" />
+
+        <import type="com.borabor.movieapp.util.ImageQuality" />
+
+        <import type="com.borabor.movieapp.util.Content" />
+
+        <import type="com.borabor.movieapp.util.Detail" />
+
+        <variable
+            name="fragment"
+            type="com.borabor.movieapp.presentation.screen.moviedetails.MovieDetailsFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.borabor.movieapp.presentation.screen.moviedetails.MovieDetailsViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@{fragment.backgroundColor}"
+        android:orientation="vertical"
+        tools:context=".presentation.screen.moviedetails.MovieDetailsFragment">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinatorLayout"
+            isVisible="@{viewModel.uiState.success}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                backgroundColor="@{fragment.backgroundColor}"
+                collapsingToolbar="@{collapsingToolbarLayout}"
+                collapsingToolbarTitle="@{viewModel.details.title}"
+                frameLayout="@{frameLayout}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@{fragment.backgroundColor}"
+                android:fitsSystemWindows="true">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsingToolbarLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/detail_poster_height"
+                    app:contentScrim="@{fragment.backgroundColor}"
+                    app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+                    app:titleCollapseMode="scale"
+                    app:toolbarId="@id/toolbar">
+
+                    <FrameLayout
+                        android:id="@+id/frameLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fitsSystemWindows="true"
+                        app:layout_collapseMode="parallax">
+
+                        <ImageView
+                            centerCrop="@{true}"
+                            errorImage="@{@drawable/ic_baseline_movie_24}"
+                            imageQuality="@{ImageQuality.HIGH}"
+                            imageUrl="@{viewModel.details.posterPath}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            tools:src="@drawable/ic_baseline_movie_24" />
+
+                        <LinearLayout
+                            style="@style/BriefDetailParent"
+                            transparentBackground="@{fragment.backgroundColor}">
+
+                            <TextView
+                                style="@style/BriefDetailTitle"
+                                android:text="@{viewModel.details.title}"
+                                tools:text="Movie Title" />
+
+                            <LinearLayout
+                                isVisible="@{!viewModel.details.releaseDate.empty || viewModel.details.runtime != 0}"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="6dp">
+
+                                <TextView
+                                    style="@style/BriefDetailBody"
+                                    android:maxLength="4"
+                                    android:text="@{viewModel.details.releaseDate}"
+                                    tools:text="2022" />
+
+                                <TextView
+                                    style="@style/BriefDetailBody"
+                                    isVisible="@{!viewModel.details.releaseDate.empty &amp;&amp; viewModel.details.runtime != 0}"
+                                    android:layout_marginStart="6dp"
+                                    android:layout_marginEnd="6dp"
+                                    android:text="@string/bullet_point" />
+
+                                <TextView
+                                    style="@style/BriefDetailBody"
+                                    isVisible="@{viewModel.details.runtime != 0}"
+                                    android:text="@{ExtensionsKt.formatTime(viewModel.details.runtime, context)}"
+                                    tools:text="0hr 0min" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                style="@style/BriefDetailBody"
+                                android:drawablePadding="@dimen/textview_drawable_padding"
+                                android:text="@{ExtensionsKt.round(viewModel.details.voteAverage) + @string/item_count_s(ExtensionsKt.thousandsSeparator(viewModel.details.voteCount,context))}"
+                                app:drawableStartCompat="@drawable/ic_baseline_star_rate_18"
+                                tools:text="0.0 (0)" />
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        backArrowTint="@{fragment.backgroundColor}"
+                        fragment="@{fragment}"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        app:layout_collapseMode="pin" />
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nestedScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@{fragment.backgroundColor}"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/top_margin_large">
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/cgGenres"
+                        style="@style/DetailsTitle"
+                        android:layout_marginBottom="@dimen/bottom_margin_large" />
+
+                    <TextView
+                        android:id="@+id/summary"
+                        style="@style/DetailsTitle"
+                        isVisible="@{!viewModel.details.overview.empty}"
+                        android:text="@string/detail_summary" />
+
+                    <TextView
+                        style="@style/DetailsBody"
+                        isVisible="@{!viewModel.details.overview.empty}"
+                        android:layout_marginBottom="@dimen/bottom_margin_large"
+                        android:text="@{viewModel.details.overview}"
+                        tools:text="Summary" />
+
+                    <TextView
+                        style="@style/DetailsTitle"
+                        isVisible="@{!viewModel.details.credits.getDirector().empty}"
+                        android:text="@string/detail_director" />
+
+                    <TextView
+                        style="@style/DetailsBody"
+                        isVisible="@{!viewModel.details.credits.getDirector().empty}"
+                        android:layout_marginBottom="@dimen/bottom_margin_large"
+                        android:text="@{viewModel.details.credits.getDirector()}"
+                        tools:text="Director" />
+
+                    <TextView
+                        style="@style/DetailsTitle"
+                        isVisible="@{!viewModel.details.credits.getWriters().empty}"
+                        android:text="@string/detail_writers" />
+
+                    <TextView
+                        style="@style/DetailsBody"
+                        isVisible="@{!viewModel.details.credits.getWriters().empty}"
+                        android:layout_marginBottom="@dimen/bottom_margin_large"
+                        android:text="@{viewModel.details.credits.getWriters()}"
+                        tools:text="Writers" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        style="@style/TitleParent"
+                        isVisible="@{!viewModel.details.videos.filterVideos(false).empty}">
+
+                        <TextView
+                            android:id="@+id/videos"
+                            style="@style/Title"
+                            android:text="@string/detail_title_trailers" />
+
+                        <TextView
+                            style="@style/ListItemCount"
+                            android:text="@{@string/item_count(viewModel.details.videos.filterVideos(false).size())}"
+                            app:layout_constraintStart_toEndOf="@id/videos" />
+
+                        <TextView
+                            style="@style/SeeAll"
+                            backgroundColor="@{fragment.backgroundColor}"
+                            contentType="@{Content.VIDEOS}"
+                            isVisible="@{viewModel.details.videos.filterVideos(false).size() > 2}"
+                            title="@{@string/detail_title_trailers + @string/item_count(viewModel.details.videos.filterVideos(false).size())}"
+                            videoList="@{viewModel.details.videos.filterVideos(false)}" />
+
+                        <TextView
+                            style="@style/ListItemCount"
+                            app:layout_constraintStart_toEndOf="@id/videos" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvVideos"
+                        style="@style/RecyclerView"
+                        isVisible="@{!viewModel.details.videos.filterVideos(false).empty}"
+                        android:adapter="@{fragment.adapterVideos}" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        style="@style/TitleParent"
+                        isVisible="@{!viewModel.details.credits.cast.empty}">
+
+                        <TextView
+                            android:id="@+id/cast"
+                            style="@style/Title"
+                            android:text="@string/detail_title_cast" />
+
+                        <TextView
+                            style="@style/ListItemCount"
+                            android:text="@{@string/item_count(viewModel.details.credits.cast.size())}"
+                            app:layout_constraintStart_toEndOf="@id/cast" />
+
+                        <TextView
+                            style="@style/SeeAll"
+                            backgroundColor="@{fragment.backgroundColor}"
+                            castList="@{viewModel.details.credits.cast}"
+                            contentType="@{Content.CAST}"
+                            isVisible="@{viewModel.details.credits.cast.size() > 3}"
+                            title="@{@string/detail_title_cast + @string/item_count(viewModel.details.credits.cast.size())}" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvCast"
+                        style="@style/RecyclerView"
+                        isVisible="@{!viewModel.details.credits.cast.empty}"
+                        android:adapter="@{fragment.adapterCast}" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        style="@style/TitleParent"
+                        isVisible="@{!viewModel.details.images.backdrops.empty}">
+
+                        <TextView
+                            android:id="@+id/image"
+                            style="@style/Title"
+                            android:text="@string/detail_title_images" />
+
+                        <TextView
+                            style="@style/ListItemCount"
+                            android:text="@{@string/item_count(viewModel.details.images.backdrops.size())}"
+                            app:layout_constraintStart_toEndOf="@id/image" />
+
+                        <TextView
+                            style="@style/SeeAll"
+                            backgroundColor="@{fragment.backgroundColor}"
+                            contentType="@{Content.IMAGES}"
+                            imageList="@{viewModel.details.images.backdrops}"
+                            isVisible="@{viewModel.details.images.backdrops.size() > 1}"
+                            seeAllDetailType="@{Detail.MOVIE}"
+                            title="@{@string/detail_title_images + @string/item_count(viewModel.details.images.backdrops.size())}" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvImages"
+                        style="@style/RecyclerView"
+                        fixedSize="@{true}"
+                        isVisible="@{!viewModel.details.images.backdrops.empty}"
+                        android:adapter="@{fragment.adapterImages}" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        expand="@{expandableLayout}"
+                        expandIcon="@{ivExpand}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/ExpandableLayoutTitle"
+                            android:text="@string/detail_title_details"
+                            app:layout_constraintBottom_toTopOf="@id/expandableLayout" />
+
+                        <ImageView
+                            android:id="@+id/ivExpand"
+                            style="@style/ExpandIcon"
+                            iconTint="@{fragment.backgroundColor}"
+                            app:layout_constraintBottom_toTopOf="@id/expandableLayout" />
+
+                        <net.cachapa.expandablelayout.ExpandableLayout
+                            android:id="@+id/expandableLayout"
+                            style="@style/ExpandableLayout">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:paddingTop="@dimen/top_margin">
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    isVisible="@{!viewModel.details.originalTitle.empty}"
+                                    android:text="@string/detail_original_title" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    isVisible="@{!viewModel.details.originalTitle.empty}"
+                                    android:text="@{viewModel.details.originalTitle}" />
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    isVisible="@{!viewModel.details.releaseDate.empty}"
+                                    android:text="@string/detail_release_date" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    isVisible="@{!viewModel.details.releaseDate.empty}"
+                                    android:text="@{ExtensionsKt.formatDate(viewModel.details.releaseDate)}" />
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    isVisible="@{viewModel.details.runtime != 0}"
+                                    android:text="@string/detail_runtime" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    isVisible="@{viewModel.details.runtime != 0}"
+                                    android:text="@{ExtensionsKt.formatTime(viewModel.details.runtime, context) + (viewModel.details.runtime >= 60 ? ` (` + viewModel.details.runtime + @string/minute_short + `)` : ``)}" />
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    android:text="@string/detail_vote_average" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    android:text="@{ExtensionsKt.asPercent(viewModel.details.voteAverage)}" />
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    android:text="@string/detail_vote_count" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    android:text="@{ExtensionsKt.thousandsSeparator(viewModel.details.voteCount,context)}" />
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    isVisible="@{!viewModel.details.trimGenreList().empty}"
+                                    android:text="@string/detail_genre" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    isVisible="@{!viewModel.details.trimGenreList().empty}"
+                                    android:text="@{viewModel.details.trimGenreList()}" />
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    isVisible="@{!viewModel.details.trimSpokenLanguageList().empty}"
+                                    android:text="@string/detail_spoken_language" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    isVisible="@{!viewModel.details.trimSpokenLanguageList().empty}"
+                                    android:text="@{viewModel.details.trimSpokenLanguageList()}" />
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    isVisible="@{viewModel.details.budget != 0}"
+                                    android:text="@string/detail_budget" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    isVisible="@{viewModel.details.budget != 0}"
+                                    android:text="@{`$` + ExtensionsKt.thousandsSeparator(viewModel.details.budget,context)}" />
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    isVisible="@{viewModel.details.revenue != 0}"
+                                    android:text="@string/detail_revenue" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    isVisible="@{viewModel.details.revenue != 0}"
+                                    android:text="@{`$` + ExtensionsKt.thousandsSeparator(viewModel.details.revenue,context)}" />
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    isVisible="@{!viewModel.details.trimProductionCompanyList().empty}"
+                                    android:text="@string/detail_production_company" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    isVisible="@{!viewModel.details.trimProductionCompanyList().empty}"
+                                    android:text="@{viewModel.details.trimProductionCompanyList()}" />
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    isVisible="@{!viewModel.details.trimProductionCountryList().empty}"
+                                    android:text="@string/detail_production_country" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    isVisible="@{!viewModel.details.trimProductionCountryList().empty}"
+                                    android:text="@{viewModel.details.trimProductionCountryList}" />
+
+                                <TextView
+                                    style="@style/DetailsTitle"
+                                    isVisible="@{!viewModel.details.status.empty}"
+                                    android:text="@string/detail_status" />
+
+                                <TextView
+                                    style="@style/DetailsBody"
+                                    isVisible="@{!viewModel.details.status.empty}"
+                                    android:text="@{viewModel.details.status}" />
+
+                            </LinearLayout>
+
+                        </net.cachapa.expandablelayout.ExpandableLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        style="@style/TitleParent"
+                        isVisible="@{viewModel.details.recommendations.totalResults != 0}">
+
+                        <TextView
+                            style="@style/Title"
+                            android:text="@{@string/detail_title_recommended_movies}" />
+
+                        <TextView
+                            style="@style/SeeAll"
+                            backgroundColor="@{fragment.backgroundColor}"
+                            contentType="@{Content.RECOMMENDATIONS}"
+                            isVisible="@{viewModel.details.recommendations.totalResults > 3}"
+                            movieRecommendationsList="@{viewModel.details.recommendations.results}"
+                            seeAllDetailType="@{Detail.MOVIE}"
+                            title="@{@string/detail_title_recommended_movies}" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvRecommendations"
+                        style="@style/RecyclerView"
+                        fixedSize="@{true}"
+                        isVisible="@{viewModel.details.recommendations.totalResults != 0}"
+                        android:adapter="@{fragment.adapterRecommendations}" />
+
+                    <TextView
+                        style="@style/TitleWithoutSeeAll"
+                        isVisible="@{viewModel.details.externalIds.imdbId != null || viewModel.details.externalIds.facebookId != null || viewModel.details.externalIds.instagramId != null || viewModel.details.externalIds.twitterId != null || !viewModel.details.homepage.empty}"
+                        android:text="@string/detail_title_networks" />
+
+                    <LinearLayout
+                        style="@style/ExternalsParent"
+                        isVisible="@{viewModel.details.externalIds.imdbId != null || viewModel.details.externalIds.facebookId != null || viewModel.details.externalIds.instagramId != null || viewModel.details.externalIds.twitterId != null || !viewModel.details.homepage.empty}">
+
+                        <ImageView
+                            style="@style/Externals"
+                            externalId="@{viewModel.details.externalIds.imdbId}"
+                            externalPlatform="@{ExternalPlatform.IMDB}"
+                            iconTint="@{fragment.backgroundColor}"
+                            isVisible="@{viewModel.details.externalIds.imdbId != null}"
+                            android:src="@drawable/ic_imdb_36" />
+
+                        <ImageView
+                            style="@style/Externals"
+                            externalId="@{viewModel.details.externalIds.facebookId}"
+                            externalPlatform="@{ExternalPlatform.FACEBOOK}"
+                            iconTint="@{fragment.backgroundColor}"
+                            isVisible="@{viewModel.details.externalIds.facebookId != null}"
+                            android:src="@drawable/ic_facebook_36" />
+
+                        <ImageView
+                            style="@style/Externals"
+                            externalId="@{viewModel.details.externalIds.instagramId}"
+                            externalPlatform="@{ExternalPlatform.INSTAGRAM}"
+                            iconTint="@{fragment.backgroundColor}"
+                            isVisible="@{viewModel.details.externalIds.instagramId != null}"
+                            android:src="@drawable/ic_instagram_36" />
+
+                        <ImageView
+                            style="@style/Externals"
+                            externalId="@{viewModel.details.externalIds.twitterId}"
+                            externalPlatform="@{ExternalPlatform.TWITTER}"
+                            iconTint="@{fragment.backgroundColor}"
+                            isVisible="@{viewModel.details.externalIds.twitterId != null}"
+                            android:src="@drawable/ic_twitter_36" />
+
+                        <ImageView
+                            style="@style/Externals"
+                            externalId="@{viewModel.details.homepage}"
+                            externalPlatform="@{ExternalPlatform.HOMEPAGE}"
+                            iconTint="@{fragment.backgroundColor}"
+                            isVisible="@{!viewModel.details.homepage.empty}"
+                            android:src="@drawable/ic_baseline_link_36" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:baselineAlignBottom="false"
+                android:onClick="@{() -> viewModel.updateFavorites()}"
+                android:src="@{viewModel.isInFavorites ? @drawable/ic_baseline_favorite_24 : @drawable/ic_baseline_favorite_border_24}"
+                app:layout_anchor="@id/appBarLayout"
+                app:layout_anchorGravity="end|bottom"
+                tools:src="@drawable/ic_baseline_favorite_border_24" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <FrameLayout
+            style="@style/BackButtonParent"
+            isVisible="@{viewModel.uiState.loading || viewModel.uiState.error}">
+
+            <ImageButton
+                style="@style/BackButton"
+                iconTint="@{fragment.backgroundColor}"
+                android:onClick="@{() -> fragment.requireActivity().onBackPressedDispatcher.onBackPressed()}" />
+
+        </FrameLayout>
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            style="@style/Loading"
+            isVisible="@{viewModel.uiState.loading}" />
+
+    </LinearLayout>
+
+</layout>

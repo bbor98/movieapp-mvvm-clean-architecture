@@ -1,19 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.borabor.movieapp.presentation.ui.home.HomeFragment"
+        android:name="com.borabor.movieapp.presentation.screen.home.HomeFragment"
         android:label="HomeFragment" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.borabor.movieapp.presentation.ui.search.SearchFragment"
+        android:name="com.borabor.movieapp.presentation.screen.search.SearchFragment"
         android:label="SearchFragment" />
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.borabor.movieapp.presentation.ui.favorites.FavoritesFragment"
+        android:name="com.borabor.movieapp.presentation.screen.favorites.FavoritesFragment"
         android:label="FavoritesFragment" />
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.borabor.movieapp.presentation.screen.moviedetails.MovieDetailsFragment"
+        android:label="MovieDetailsFragment">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="backgroundColor"
+            app:argType="integer" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_movieDetailsFragment"
+        app:destination="@id/movieDetailsFragment" />
+    <fragment
+        android:id="@+id/tvDetailsFragment"
+        android:name="com.borabor.movieapp.presentation.screen.tvdetails.TvDetailsFragment"
+        android:label="TvDetailsFragment">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="backgroundColor"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_tvDetailsFragment_to_seasonDetailsFragment"
+            app:destination="@id/seasonDetailsFragment" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_tvDetailsFragment"
+        app:destination="@id/tvDetailsFragment" />
+    <fragment
+        android:id="@+id/personDetailsFragment"
+        android:name="com.borabor.movieapp.presentation.screen.persondetails.PersonDetailsFragment"
+        android:label="PersonDetailsFragment">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="backgroundColor"
+            app:argType="integer" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_personDetailsFragment"
+        app:destination="@id/personDetailsFragment" />
+    <fragment
+        android:id="@+id/seasonDetailsFragment"
+        android:name="com.borabor.movieapp.presentation.screen.tvdetails.seasondetails.SeasonDetailsFragment"
+        android:label="SeasonDetailsFragment">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="backgroundColor"
+            app:argType="integer" />
+        <argument
+            android:name="seasonNumber"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_seasonDetailsFragment_to_episodeDetailsFragment"
+            app:destination="@id/episodeDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/seeAllFragment"
+        android:name="com.borabor.movieapp.presentation.screen.seeall.SeeAllFragment"
+        android:label="SeeAllFragment">
+        <argument
+            android:name="contentType"
+            app:argType="com.borabor.movieapp.util.Content" />
+        <argument
+            android:name="detailType"
+            android:defaultValue="@null"
+            app:argType="com.borabor.movieapp.util.Detail"
+            app:nullable="true" />
+        <argument
+            android:name="genreId"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="listId"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="backgroundColor"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="region"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="videoList"
+            android:defaultValue="@null"
+            app:argType="com.borabor.movieapp.domain.model.Video[]"
+            app:nullable="true" />
+        <argument
+            android:name="imageList"
+            android:defaultValue="@null"
+            app:argType="com.borabor.movieapp.domain.model.Image[]"
+            app:nullable="true" />
+        <argument
+            android:name="castList"
+            android:defaultValue="@null"
+            app:argType="com.borabor.movieapp.domain.model.Person[]"
+            app:nullable="true" />
+        <argument
+            android:name="personMovieCreditsList"
+            android:defaultValue="@null"
+            app:argType="com.borabor.movieapp.domain.model.Movie[]"
+            app:nullable="true" />
+        <argument
+            android:name="personTvCreditsList"
+            android:defaultValue="@null"
+            app:argType="com.borabor.movieapp.domain.model.Tv[]"
+            app:nullable="true" />
+        <argument
+            android:name="movieRecommendationsList"
+            android:defaultValue="@null"
+            app:argType="com.borabor.movieapp.domain.model.Movie[]"
+            app:nullable="true" />
+        <argument
+            android:name="tvRecommendationsList"
+            android:defaultValue="@null"
+            app:argType="com.borabor.movieapp.domain.model.Tv[]"
+            app:nullable="true" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_seeAllFragment"
+        app:destination="@id/seeAllFragment" />
+    <fragment
+        android:id="@+id/fullscreenImageFragment"
+        android:name="com.borabor.movieapp.presentation.screen.fullscreenimage.FullscreenImageFragment"
+        android:label="FullscreenImageFragment">
+        <argument
+            android:name="imageList"
+            app:argType="com.borabor.movieapp.domain.model.Image[]" />
+        <argument
+            android:name="imagePosition"
+            app:argType="integer" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_fullscreenImageFragment"
+        app:destination="@id/fullscreenImageFragment" />
+    <fragment
+        android:id="@+id/episodeDetailsFragment"
+        android:name="com.borabor.movieapp.presentation.screen.tvdetails.seasondetails.episodedetails.EpisodeDetailsFragment"
+        android:label="fragment_episode_details"
+        tools:layout="@layout/fragment_episode_details">
+        <argument
+            android:name="seasonNumber"
+            app:argType="integer" />
+        <argument
+            android:name="episodeNumber"
+            app:argType="integer" />
+    </fragment>
 </navigation>

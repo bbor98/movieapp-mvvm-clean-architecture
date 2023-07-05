@@ -5,15 +5,15 @@
 
     <data>
 
-        <import type="com.borabor.movieapp.util.IntentType" />
+        <import type="com.borabor.movieapp.util.Content" />
 
         <variable
             name="genre"
             type="com.borabor.movieapp.domain.model.Genre" />
 
         <variable
-            name="mediaType"
-            type="com.borabor.movieapp.util.MediaType" />
+            name="detailType"
+            type="com.borabor.movieapp.util.Detail" />
 
     </data>
 
@@ -24,9 +24,9 @@
         android:padding="10dp">
 
         <androidx.cardview.widget.CardView
-            intId="@{genre.id}"
-            intentType="@{IntentType.GENRE}"
-            mediaType="@{mediaType}"
+            contentType="@{Content.GENRE}"
+            genreId="@{genre.id}"
+            seeAllDetailType="@{detailType}"
             title="@{genre.name}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

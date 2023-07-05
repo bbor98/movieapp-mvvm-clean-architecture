@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.ui.favorites.FavoritesFragment">
+        tools:context=".presentation.screen.favorites.FavoritesFragment">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"

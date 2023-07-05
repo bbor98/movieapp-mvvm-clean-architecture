@@ -6,7 +6,7 @@
 
         <import type="com.borabor.movieapp.util.ExtensionsKt" />
 
-        <import type="com.borabor.movieapp.util.MediaType" />
+        <import type="com.borabor.movieapp.util.Detail" />
 
         <variable
             name="tvId"
@@ -21,7 +21,7 @@
     <LinearLayout
         detailId="@{tvId}"
         detailImageUrl="@{season.posterPath}"
-        detailMediaType="@{MediaType.TV}"
+        detailType="@{Detail.TV_SEASON}"
         seasonNumber="@{season.seasonNumber}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,10 +64,7 @@
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/tab_indicator_text" />
+        <View style="@style/Separator" />
 
     </LinearLayout>
 

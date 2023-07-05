@@ -11,16 +11,10 @@ import com.borabor.movieapp.databinding.ItemEpisodeBinding
 import com.borabor.movieapp.domain.model.Episode
 
 class EpisodeAdapter(
-    private val backgroundColor: Int,
-    private val onItemClicked: (episode: Episode) -> Unit,
+    private val tvId: Int,
+    private val backgroundColor: Int
 ) : ListAdapter<Episode, EpisodeAdapter.ViewHolder>(DiffCallback) {
-    inner class ViewHolder(val view: ItemEpisodeBinding) : RecyclerView.ViewHolder(view.root) {
-        init {
-            view.root.setOnClickListener {
-                onItemClicked(getItem(adapterPosition))
-            }
-        }
-    }
+    inner class ViewHolder(val view: ItemEpisodeBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_episode, parent, false))
@@ -28,6 +22,7 @@ class EpisodeAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.view.apply {
+            tvId = this@EpisodeAdapter.tvId
             backgroundColor = this@EpisodeAdapter.backgroundColor
             episode = getItem(position)
         }

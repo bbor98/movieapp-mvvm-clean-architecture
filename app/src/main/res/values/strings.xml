@@ -68,12 +68,11 @@
     <string name="detail_first_air_date">First Episode Release Date</string>
     <string name="detail_last_air_date">Last Episode Release Date</string>
     <string name="detail_episode_runtime">Episode Runtime</string>
-    <string name="detail_season_count">Seasons</string>
-    <string name="detail_episode_count">Episodes</string>
     <string name="detail_in_production">In Production</string>
     <string name="detail_networks">Available On</string>
     <string name="detail_season_episodes">%d episodes</string>
 
+    <string name="detail_season_and_episode_number">S%dE%d</string>
     <string name="detail_title_episodes">Episodes</string>
     <string name="detail_title_guest_stars">Guest Stars</string>
 

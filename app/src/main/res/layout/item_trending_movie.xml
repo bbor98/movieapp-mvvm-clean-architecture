@@ -9,7 +9,7 @@
 
         <import type="com.borabor.movieapp.util.ImageQuality" />
 
-        <import type="com.borabor.movieapp.util.MediaType" />
+        <import type="com.borabor.movieapp.util.Detail" />
 
         <variable
             name="movie"
@@ -20,14 +20,14 @@
     <FrameLayout
         detailId="@{movie.id}"
         detailImageUrl="@{movie.posterPath}"
-        detailMediaType="@{MediaType.MOVIE}"
+        detailType="@{Detail.MOVIE}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:foreground="?attr/selectableItemBackground">
 
         <ImageView
+            errorImage="@{@drawable/ic_baseline_movie_24}"
             fitTop="@{true}"
-            imageMediaType="@{MediaType.MOVIE}"
             imageQuality="@{ImageQuality.HIGH}"
             imageUrl="@{movie.posterPath}"
             android:layout_width="match_parent"

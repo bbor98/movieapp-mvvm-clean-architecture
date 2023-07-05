@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.borabor.movieapp.R
 import com.borabor.movieapp.databinding.ItemGenreBinding
 import com.borabor.movieapp.domain.model.Genre
-import com.borabor.movieapp.util.MediaType
+import com.borabor.movieapp.util.Detail
 
 class GenreAdapter(
-    private val mediaType: MediaType
+    private val detailType: Detail
 ) : ListAdapter<Pair<Int, String>, GenreAdapter.ViewHolder>(DiffCallback) {
     inner class ViewHolder(val view: ItemGenreBinding) : RecyclerView.ViewHolder(view.root)
 
@@ -22,7 +22,7 @@ class GenreAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.view.apply {
-            mediaType = this@GenreAdapter.mediaType
+            detailType = this@GenreAdapter.detailType
             genre = Genre(id = getItem(position).first, name = getItem(position).second)
         }
     }

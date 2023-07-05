@@ -4,7 +4,7 @@ import com.borabor.movieapp.domain.model.VideoList
 import com.borabor.movieapp.domain.repository.MovieRepository
 import com.borabor.movieapp.domain.repository.TvRepository
 import com.borabor.movieapp.util.Constants
-import com.borabor.movieapp.util.MediaType
+import com.borabor.movieapp.util.Detail
 import com.borabor.movieapp.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -15,14 +15,14 @@ class GetTrendingVideos @Inject constructor(
     private val tvRepository: TvRepository
 ) {
     operator fun invoke(
-        mediaType: MediaType,
+        detailType: Detail,
         id: Int
     ): Flow<Resource<VideoList>> = flow {
         emit(
-            when (mediaType) {
-                MediaType.MOVIE -> movieRepository.getTrendingMovieTrailers(id)
-                MediaType.TV -> tvRepository.getTrendingTvTrailers(id)
-                else -> throw IllegalArgumentException(Constants.ILLEGAL_ARGUMENT_MEDIA_TYPE)
+            when (detailType) {
+                Detail.MOVIE -> movieRepository.getTrendingMovieTrailers(id)
+                Detail.TV -> tvRepository.getTrendingTvTrailers(id)
+                else -> throw IllegalArgumentException(Constants.ILLEGAL_ARGUMENT_DETAIL_TYPE)
             }
         )
     }

@@ -76,7 +76,6 @@ fun EpisodeDTO.toEpisode(): Episode = Episode(
     airDate = airDate,
     episodeNumber = episodeNumber,
     name = name,
-    overview = overview,
     seasonNumber = seasonNumber,
     stillPath = stillPath,
     voteAverage = voteAverage,
@@ -84,9 +83,16 @@ fun EpisodeDTO.toEpisode(): Episode = Episode(
 )
 
 fun EpisodeDetailDTO.toEpisodeDetail(): EpisodeDetail = EpisodeDetail(
+    airDate = airDate,
     credits = credits.toCredits(),
     images = images.toImageList(),
-    videos = videos.toVideoList()
+    name = name,
+    overview = overview,
+    runtime = runtime,
+    stillPath = stillPath,
+    videos = videos.toVideoList(),
+    voteAverage = voteAverage,
+    voteCount = voteCount
 )
 
 fun ExternalDTO.toExternal(): External = External(

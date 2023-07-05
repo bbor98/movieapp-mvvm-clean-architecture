@@ -1,12 +1,19 @@
 package com.borabor.movieapp.util
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.Color
+import android.os.Parcelable
 import android.view.MotionEvent
+import android.view.View
+import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.borabor.movieapp.BuildConfig
 import com.borabor.movieapp.R
+import com.borabor.movieapp.domain.model.Genre
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.google.android.youtube.player.YouTubeStandalonePlayer
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
@@ -14,10 +21,10 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 import kotlin.math.roundToInt
 
-fun Activity.playYouTubeVideo(videoKey: String) {
+fun Fragment.playYouTubeVideo(videoKey: String) {
     startActivity(
         YouTubeStandalonePlayer.createVideoIntent(
-            this,
+            requireActivity(),
             BuildConfig.YOUTUBE_API_KEY,
             videoKey,
             0, // start millisecond
@@ -25,6 +32,35 @@ fun Activity.playYouTubeVideo(videoKey: String) {
             false // lightbox mode
         )
     )
+}
+
+fun ChipGroup.setGenreChips(
+    genres: List<Genre>,
+    detailType: Detail,
+    backgroundColor: Int
+) {
+    genres.forEach { genre ->
+        addView(
+            Chip(context).apply {
+                setChipBackgroundColorResource(if (backgroundColor.isDarkColor()) R.color.white else R.color.black)
+                text = genre.name
+                textAlignment = View.TEXT_ALIGNMENT_CENTER
+                setTextColor(backgroundColor.setTintColor(true))
+
+                setOnClickListener {
+                    val bundle = bundleOf(
+                        Constants.CONTENT_TYPE to Content.GENRE as Parcelable,
+                        Constants.DETAIL_TYPE to detailType as Parcelable,
+                        Constants.GENRE_ID to genre.id,
+                        Constants.TITLE to genre.name,
+                        Constants.BACKGROUND_COLOR to backgroundColor
+                    )
+
+                    findNavController().navigate(R.id.action_global_seeAllFragment, bundle)
+                }
+            }
+        )
+    }
 }
 
 fun RecyclerView.interceptTouch() {

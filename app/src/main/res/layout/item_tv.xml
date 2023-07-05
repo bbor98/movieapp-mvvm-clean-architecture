@@ -9,7 +9,7 @@
 
         <import type="com.borabor.movieapp.util.ImageQuality" />
 
-        <import type="com.borabor.movieapp.util.MediaType" />
+        <import type="com.borabor.movieapp.util.Detail" />
 
         <variable
             name="tv"
@@ -28,7 +28,7 @@
     <LinearLayout
         detailId="@{tv.id}"
         detailImageUrl="@{tv.posterPath}"
-        detailMediaType="@{MediaType.TV}"
+        detailType="@{Detail.TV}"
         android:layout_width="@{isGrid ? @dimen/grid_list_item_width : @dimen/portrait_image_width, default = @dimen/portrait_image_width}"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/recyclerview_item_end_margin"
@@ -45,7 +45,7 @@
             app:cardElevation="@dimen/card_elevation">
 
             <ImageView
-                imageMediaType="@{MediaType.TV}"
+                errorImage="@{@drawable/ic_baseline_live_tv_24}"
                 imageQuality="@{ImageQuality.LOW}"
                 imageUrl="@{tv.posterPath}"
                 android:layout_width="match_parent"

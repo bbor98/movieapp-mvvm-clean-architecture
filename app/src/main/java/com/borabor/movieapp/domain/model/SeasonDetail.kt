@@ -1,7 +1,7 @@
 package com.borabor.movieapp.domain.model
 
 data class SeasonDetail(
-    val airDate: String,
+    val airDate: String?,
     val credits: Credits,
     val episodes: List<Episode>,
     val images: ImageList,
@@ -13,7 +13,7 @@ data class SeasonDetail(
 ) {
     companion object {
         val empty = SeasonDetail(
-            airDate = "",
+            airDate = null,
             credits = Credits.empty,
             episodes = emptyList(),
             images = ImageList.empty,
@@ -27,10 +27,9 @@ data class SeasonDetail(
 }
 
 data class Episode(
-    val airDate: String,
+    val airDate: String?,
     val episodeNumber: Int,
     val name: String,
-    val overview: String,
     val seasonNumber: Int,
     val stillPath: String?,
     val voteAverage: Double,
@@ -38,10 +37,9 @@ data class Episode(
 ) {
     companion object {
         val empty = Episode(
-            airDate = "",
+            airDate = null,
             episodeNumber = 0,
             name = "",
-            overview = "",
             seasonNumber = 0,
             stillPath = null,
             voteAverage = 0.0,

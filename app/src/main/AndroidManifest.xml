@@ -13,26 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieApp">
         <activity
-            android:name=".presentation.ui.seeall.SeeAllActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.ui.seasondetails.SeasonDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.ui.tvdetails.TvDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.ui.persondetails.PersonDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.ui.fullscreenimage.FullscreenImageActivity"
-            android:exported="false"
-            android:theme="@style/FullscreenImageTheme" />
-        <activity
-            android:name=".presentation.ui.moviedetails.MovieDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.ui.MainActivity"
+            android:name=".presentation.screen.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

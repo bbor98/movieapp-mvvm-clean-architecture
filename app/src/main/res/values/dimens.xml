@@ -22,11 +22,12 @@
     <dimen name="landscape_image_height_small">115dp</dimen>
 
     <dimen name="detail_poster_height">600dp</dimen>
+    <dimen name="season_detail_poster_height">400dp</dimen>
 
     <dimen name="episode_poster_width">208dp</dimen>
     <dimen name="episode_poster_height">120dp</dimen>
     <dimen name="episode_number_indicator_size">28dp</dimen>
-    <dimen name="episode_detail_poster_height">200dp</dimen>
+    <dimen name="episode_detail_poster_height">250dp</dimen>
 
     <dimen name="start_margin">16dp</dimen>
     <dimen name="start_margin_small">8dp</dimen>
@@ -42,7 +43,8 @@
     <dimen name="bottom_margin_small">8dp</dimen>
     <dimen name="bottom_margin_large">24dp</dimen>
 
-    <dimen name="padding_close_button">16dp</dimen>
+    <dimen name="margin_close_button">8dp</dimen>
+    <dimen name="padding_close_button">8dp</dimen>
 
     <dimen name="trending_padding_top">100dp</dimen>
     <dimen name="trending_item_height">450dp</dimen>
@@ -61,4 +63,6 @@
 
     <dimen name="custom_match_parent">-1px</dimen>
     <dimen name="grid_list_item_width">@dimen/custom_match_parent</dimen>
+
+    <dimen name="separator_height">0.5dp</dimen>
 </resources>
