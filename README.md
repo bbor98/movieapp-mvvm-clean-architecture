@@ -20,6 +20,7 @@ A movie & TV show exploration app that implements <b>MVVM</b> design pattern by 
 ### 🔸 Project Features
 - Written in [Kotlin](https://kotlinlang.org/)
 - Implementing MVVM design pattern with Android Architecture Components
+- Implementing single-activity architecture
 - Following clean architecture principles[*](https://github.com/bbor98/movieapp-mvvm-clean-architecture#-note)
 - Dependency injection with [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 - Consuming a [REST API](https://www.themoviedb.org/documentation/api)
@@ -96,9 +97,6 @@ Consists of three packages:
 - `model` contains data classes that hold the data retrieved from the data layer to be used later on in the presentation layer to expose it to UI
 - `repository` contains repository **interfaces** to abstract the domain layer from the data layer
 - `usecase` contains use cases(interactors) that handle the business logic, which are reused by multiple ViewModels
-
-### 📌 Note
-This is a learning project. I'm not claiming that this project implements clean architecture immaculately, I'm still in the learning phase. I will update the project as I learn more about clean architecture and realize my mistakes. I'm also open to any kind of advice to make the project's code quality better.
 
 ## 📚 Libraries
 - [Jetpack](https://developer.android.com/jetpack) libraries
